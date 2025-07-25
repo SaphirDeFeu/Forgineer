@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "forgineer",
+  "version": "${version}",
+  "name": "Forgineer",
+  "description": "A mod focused entirely on the expeditions into the frozen unknowns of the world.",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/forgineer/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "io.github.saphirdefeu.forgineer.client.ForgineerDataGenerator"
+    ],
+    "client": [
+      "io.github.saphirdefeu.forgineer.client.ForgineerClient"
+    ],
+    "main": [
+      "io.github.saphirdefeu.forgineer.Forgineer"
+    ]
+  },
+  "mixins": [
+    "forgineer.mixins.json",
+    {
+      "config": "forgineer.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

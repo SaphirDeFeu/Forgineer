@@ -63,12 +63,23 @@ public class Temperature {
             return currentTemperature;
         }
 
-        if(biome.getTemperature() < 0.2) {
-            return currentTemperature - 1;
-        } else if(biome.getTemperature() > 0.8) {
-            return currentTemperature + 1;
-        }
+        // Calculate a 'desired' temperature and move towards it
+        // The 'desired' temperature transforms the biome temperature range 0.0-1.0 (float)
+        // To a corporal temperature range (-10000) - (+10000) (int)
+        int desiredTemperature = ((int) biome.getTemperature()) * 20000 - 10000;
 
-        return currentTemperature;
+        // If we're in water, the desired temperature will be multiplied by a constant factor
+        // And clamped.
+        if(world.isWater(position)) desiredTemperature = (int) (desiredTemperature * 1.5);
+        desiredTemperature = Math.clamp(desiredTemperature, -10000, 10000);
+
+        // Then, the difference between the desired temperature and current temperature is calculated
+        // And used as a reference for the speed of the change
+        int diffK = currentTemperature - desiredTemperature;
+        int deltaK = diffK / 1000;
+
+        // The result will be a negative (hotter environment) or positive (colder environment)
+        // Used as the slope that will influence the temperature change
+        return currentTemperature - deltaK;
     }
 }

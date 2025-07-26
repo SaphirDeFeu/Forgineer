@@ -2,6 +2,7 @@ package io.github.saphirdefeu.forgineer;
 
 import io.github.saphirdefeu.forgineer.init.EventRegistrar;
 import io.github.saphirdefeu.forgineer.init.ModBlocks;
+import io.github.saphirdefeu.forgineer.init.ModEffects;
 import io.github.saphirdefeu.forgineer.init.ModItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -42,6 +43,7 @@ public class Forgineer implements ModInitializer {
 
         ModItems.initialize();
         ModBlocks.initialize();
+        ModEffects.initialize();
 
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, GRAPHITE_PLACED_KEY);
 

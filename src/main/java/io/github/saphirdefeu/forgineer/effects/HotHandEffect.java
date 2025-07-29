@@ -3,13 +3,12 @@ package io.github.saphirdefeu.forgineer.effects;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 
-public class HypothermiaEffect extends StatusEffect {
+public class HotHandEffect extends StatusEffect {
 
-    public HypothermiaEffect() {
-        super(StatusEffectCategory.HARMFUL, 0xb4d9ff);
+    public HotHandEffect() {
+        super(StatusEffectCategory.HARMFUL, 0xff9a5f);
     }
 
     public boolean canApplyUpdateEffect(int duration, int amplifier) {

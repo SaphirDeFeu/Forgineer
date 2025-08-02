@@ -1,4 +1,4 @@
-package io.github.saphirdefeu.forgineer.effects;
+package io.github.saphirdefeu.forgineer.effect;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;

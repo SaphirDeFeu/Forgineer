@@ -1,6 +1,8 @@
 {
   "item.forgineer.graphite_powder": "Graphite Powder",
   "item.forgineer.graphite": "Graphite",
+  "item.forgineer.casting_mold": "Casting Mold",
+  "item.forgineer.used_casting_mold": "Used Casting Mold",
 
   "block.forgineer.graphite": "Graphite",
 

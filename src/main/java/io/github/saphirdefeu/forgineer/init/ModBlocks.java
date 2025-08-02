@@ -59,7 +59,7 @@ public class ModBlocks {
 
     public static void initialize() {
         ItemGroupEvents
-                .modifyEntriesEvent(Forgineer.FORGINEER_ITEM_GROUP_KEY)
+                .modifyEntriesEvent(ModItemGroup.FORGINEER_ITEM_GROUP_KEY)
                 .register((itemGroup) -> itemGroup.add(ModBlocks.GRAPHITE.asItem()));
     }
 

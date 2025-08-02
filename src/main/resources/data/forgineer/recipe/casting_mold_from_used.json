@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "forgineer:used_casting_mold",
+    "minecraft:water_bucket",
+    "forgineer:graphite_powder"
+  ],
+  "result": {
+    "id": "forgineer:casting_mold"
+  }
+}

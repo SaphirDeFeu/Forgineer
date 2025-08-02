@@ -1,7 +1,7 @@
 package io.github.saphirdefeu.forgineer.init;
 
 import io.github.saphirdefeu.forgineer.Forgineer;
-import io.github.saphirdefeu.forgineer.effects.HotHandEffect;
+import io.github.saphirdefeu.forgineer.effect.HotHandEffect;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;

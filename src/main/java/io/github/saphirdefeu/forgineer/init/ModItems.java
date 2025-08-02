@@ -29,6 +29,11 @@ public class ModItems {
                     .maxCount(1)
     );
 
+    public static final Item MOLTEN_IRON = register("molten_iron", MoltenMetal::new,
+            new Item.Settings()
+                    .fireproof()
+    );
+
     private static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
         // Create item key, item instance, and register the item instance.
         RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, name));
@@ -46,6 +51,7 @@ public class ModItems {
                     itemGroup.add(GRAPHITE_POWDER);
                     itemGroup.add(CASTING_MOLD);
                     itemGroup.add(USED_CASTING_MOLD);
+                    itemGroup.add(MOLTEN_IRON);
                 }
         );
     }

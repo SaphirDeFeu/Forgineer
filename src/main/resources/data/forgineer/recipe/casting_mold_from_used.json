@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
+  "group": "casting_mold",
   "ingredients": [
     "forgineer:used_casting_mold",
     "minecraft:water_bucket",

@@ -32,8 +32,8 @@ public class Forgineer implements ModInitializer {
 
         ModItemGroup.initialize();
 
-        ModItems.initialize();
         ModBlocks.initialize();
+        ModItems.initialize();
         ModEffects.initialize();
 
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, GRAPHITE_PLACED_KEY);

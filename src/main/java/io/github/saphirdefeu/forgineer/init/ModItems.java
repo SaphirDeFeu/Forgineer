@@ -34,6 +34,16 @@ public class ModItems {
                     .fireproof()
     );
 
+    public static final Item MOLTEN_GOLD = register("molten_gold", MoltenMetal::new,
+            new Item.Settings()
+                    .fireproof()
+    );
+
+    public static final Item MOLTEN_COPPER = register("molten_copper", MoltenMetal::new,
+            new Item.Settings()
+                    .fireproof()
+    );
+
     private static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
         // Create item key, item instance, and register the item instance.
         RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, name));
@@ -52,6 +62,8 @@ public class ModItems {
                     itemGroup.add(CASTING_MOLD);
                     itemGroup.add(USED_CASTING_MOLD);
                     itemGroup.add(MOLTEN_IRON);
+                    itemGroup.add(MOLTEN_GOLD);
+                    itemGroup.add(MOLTEN_COPPER);
                 }
         );
     }

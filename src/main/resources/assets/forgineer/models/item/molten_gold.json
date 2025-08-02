@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer1": "forgineer:item/molten_gold",
+    "layer0": "forgineer:item/molten_metal_underlay"
+  }
+}

@@ -1,12 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "group": "iron_ingot",
+  "group": "copper_ingot",
   "ingredients": [
     "forgineer:casting_mold",
-    "forgineer:molten_iron"
+    "forgineer:molten_copper"
   ],
   "result": {
-    "id": "minecraft:iron_ingot"
+    "id": "minecraft:copper_ingot"
   }
 }

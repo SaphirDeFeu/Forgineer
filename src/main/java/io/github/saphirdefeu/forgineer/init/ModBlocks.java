@@ -29,6 +29,15 @@ public class ModBlocks {
             true
     );
 
+    public static final Block RUBY_ORE = register("ruby_ore", Block::new,
+            AbstractBlock.Settings.create()
+                    .sounds(BlockSoundGroup.AMETHYST_BLOCK)
+                    .requiresTool()
+                    .hardness(2.0f)
+                    .resistance(7.5f),
+            true
+    );
+
     private static Block register(
             String name,
             Function<AbstractBlock.Settings, Block> blockFactory,
@@ -60,7 +69,10 @@ public class ModBlocks {
     public static void initialize() {
         ItemGroupEvents
                 .modifyEntriesEvent(ModItemGroup.FORGINEER_ITEM_GROUP_KEY)
-                .register((itemGroup) -> itemGroup.add(ModBlocks.GRAPHITE.asItem()));
+                .register((itemGroup) -> {
+                    itemGroup.add(ModBlocks.GRAPHITE.asItem());
+                    itemGroup.add(ModBlocks.RUBY_ORE.asItem());
+                });
     }
 
 }

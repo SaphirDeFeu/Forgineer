@@ -44,6 +44,8 @@ public class ModItems {
                     .fireproof()
     );
 
+    public static final Item UNCUT_RUBY = register("uncut_ruby", Item::new, new Item.Settings());
+
     private static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
         // Create item key, item instance, and register the item instance.
         RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, name));
@@ -61,9 +63,12 @@ public class ModItems {
                     itemGroup.add(GRAPHITE_POWDER);
                     itemGroup.add(CASTING_MOLD);
                     itemGroup.add(USED_CASTING_MOLD);
+
                     itemGroup.add(MOLTEN_IRON);
                     itemGroup.add(MOLTEN_GOLD);
                     itemGroup.add(MOLTEN_COPPER);
+
+                    itemGroup.add(UNCUT_RUBY);
                 }
         );
     }

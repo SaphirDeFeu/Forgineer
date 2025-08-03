@@ -1,31 +1,46 @@
 package io.github.saphirdefeu.forgineer.item;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
+import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.server.world.ServerWorld;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.World;
 
 public class Ruby extends Item {
 
-    public static final Settings settings = new Settings().rarity(Rarity.UNCOMMON);
+    private static final EntityAttributeModifier entityAttributeModifier = new EntityAttributeModifier(
+        Identifier.of("minecraft:max_health"), 10.0, EntityAttributeModifier.Operation.ADD_VALUE
+    );
+
+    public static final Settings settings = new Settings()
+            .rarity(Rarity.UNCOMMON);
 
     public Ruby(Settings settings) {
         super(settings);
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
-        if(entity instanceof LivingEntity) {
-            StatusEffectInstance instance = new StatusEffectInstance(StatusEffects.HEALTH_BOOST, 2, 1, false, false, true);
-            ((LivingEntity) entity).addStatusEffect(instance);
+    public ActionResult use(World world, PlayerEntity user, Hand hand) {
+        if(world.isClient) {
+            return ActionResult.PASS;
         }
 
-        super.inventoryTick(stack, world, entity, slot);
+        Multimap<RegistryEntry<EntityAttribute>, EntityAttributeModifier> modifierMultimap = ArrayListMultimap.create();
+        modifierMultimap.put(EntityAttributes.MAX_HEALTH, entityAttributeModifier);
+        user.getAttributes().addTemporaryModifiers(modifierMultimap);
+
+        user.getStackInHand(hand).decrement(1);
+
+        return ActionResult.SUCCESS;
     }
+
+
 }

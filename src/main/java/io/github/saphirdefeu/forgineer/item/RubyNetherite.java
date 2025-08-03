@@ -1,31 +1,67 @@
 package io.github.saphirdefeu.forgineer.item;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
+import io.github.saphirdefeu.forgineer.Forgineer;
+import net.minecraft.entity.attribute.*;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.Rarity;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
+import net.minecraft.util.*;
+import net.minecraft.world.World;
 
 public class RubyNetherite extends Item {
 
-    public static final Settings settings = new Settings().maxCount(16).rarity(Rarity.EPIC);
+    private static final EntityAttributeModifier entityAttributeModifier = new EntityAttributeModifier(
+            Identifier.of("minecraft:max_health"), 20.0, EntityAttributeModifier.Operation.ADD_VALUE
+    );
+
+    public static final Settings settings = new Settings()
+            .maxCount(1)
+            .rarity(Rarity.EPIC);
 
     public RubyNetherite(Settings settings) {
         super(settings);
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
-        if(entity instanceof LivingEntity) {
-            StatusEffectInstance instance = new StatusEffectInstance(StatusEffects.HEALTH_BOOST, 2, 4, false, false, true);
-            ((LivingEntity) entity).addStatusEffect(instance);
+    public ActionResult use(World world, PlayerEntity user, Hand hand) {
+        if(world.isClient) {
+            return ActionResult.PASS;
         }
 
-        super.inventoryTick(stack, world, entity, slot);
+        final double healthModifier = user.getAttributes().getValue(EntityAttributes.MAX_HEALTH);
+        Forgineer.LOGGER.info(String.format("%s has %f health modifier", user.getDisplayName(), healthModifier));
+
+        if(healthModifier >= 40.0f) {
+            user.sendMessage(
+                    Text.translatable("forgineer.text.consume_gemstone_fail", user.getStackInHand(hand).getName())
+                            .formatted(Formatting.DARK_RED, Formatting.BOLD),
+                    false
+            );
+
+            user.playSoundToPlayer(SoundEvents.BLOCK_ANVIL_FALL, SoundCategory.PLAYERS, 10f, 1f);
+
+            return ActionResult.FAIL;
+        }
+
+        Multimap<RegistryEntry<EntityAttribute>, EntityAttributeModifier> modifierMultimap = ArrayListMultimap.create();
+        modifierMultimap.put(EntityAttributes.MAX_HEALTH, entityAttributeModifier);
+        user.getAttributes().addTemporaryModifiers(modifierMultimap);
+
+        user.sendMessage(
+                Text.translatable("forgineer.text.consume_gemstone_success", user.getStackInHand(hand).getName())
+                        .formatted(Formatting.RED),
+                false
+        );
+
+        user.playSoundToPlayer(SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.PLAYERS, 10f, 1f);
+
+        user.getStackInHand(hand).decrement(1);
+
+        return ActionResult.SUCCESS;
     }
 }

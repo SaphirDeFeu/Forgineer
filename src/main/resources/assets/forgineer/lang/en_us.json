@@ -15,5 +15,8 @@
 
   "effect.forgineer.hot_hand": "Hot Hand",
 
+  "forgineer.text.consume_gemstone_success": "The %1$s seems to bring you additional powers...",
+  "forgineer.text.consume_gemstone_fail": "You have nothing to gain from this...",
+
   "itemGroup.forgineer": "Forgineer"
 }

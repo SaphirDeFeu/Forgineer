@@ -6,6 +6,9 @@
   "item.forgineer.molten_iron": "Molten Iron",
   "item.forgineer.molten_gold": "Molten Gold",
   "item.forgineer.molten_copper": "Molten Copper",
+  "item.forgineer.uncut_ruby": "Uncut Ruby",
+  "item.forgineer.ruby": "Cut Ruby",
+  "item.forgineer.ruby_netherite": "Ruby-Infused Netherite Ingot",
 
   "block.forgineer.graphite": "Graphite",
   "block.forgineer.ruby_ore": "Ruby Ore",

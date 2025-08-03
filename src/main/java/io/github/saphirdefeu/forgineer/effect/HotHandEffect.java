@@ -16,6 +16,8 @@ public class HotHandEffect extends StatusEffect {
     }
 
     public boolean applyUpdateEffect(ServerWorld world, LivingEntity entity, int amplifier) {
+        entity.setOnFireFor(1.0f);
+
         return super.applyUpdateEffect(world, entity, amplifier);
     }
 

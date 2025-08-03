@@ -1,107 +1,57 @@
 package io.github.saphirdefeu.forgineer.state;
 
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.saphirdefeu.forgineer.Forgineer;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtDouble;
-import net.minecraft.nbt.NbtList;
-import net.minecraft.nbt.NbtString;
-import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.PersistentState;
 import net.minecraft.world.PersistentStateType;
 import net.minecraft.world.World;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
+/**
+ * All-in-one class to manage the persistent (across reloads) Server State.
+ * @see PersistentState
+ * @implNote Made thanks to <a href="https://wiki.fabricmc.net/tutorial:persistent_states">Fabric Wiki Page on Persistent States</a> although Codecs are still required unlike what it is shown in the last code example.
+ */
 public class StateManager extends PersistentState {
 
-    /**
-     * USE THE CORRESPONDING GETTER FUNCTION AS IT CONVERTS THE MAP INTO A USABLE HASHMAP
-     */
-    public Map<String, PlayerData> players;
+    private Map<String, PlayerData> players;
 
+    /**
+     * Creates a blank {@link StateManager}
+     */
     public StateManager() {
         this.players = new HashMap<>();
     }
 
+    /**
+     * Creates a new {@link StateManager} from an existing {@link Map} object
+     * @param players A compatible {@link Map} object
+     */
     public StateManager(Map<String, PlayerData> players) {
         this.players = players;
     }
 
+    /**
+     * Getter function for the {@link StateManager#players} {@link Map}.
+     * @return A mutable copy of the internal {@link StateManager#players} field as a {@link HashMap}
+     * @see StateManager#setPlayers(Map) 
+     */
     public HashMap<String, PlayerData> getPlayers() {
         return new HashMap<>(this.players);
     }
 
+    /**
+     * Setter function for the {@link StateManager#players} {@link Map}
+     * @param players Any implementation of {@link Map}.
+     * @see StateManager#getPlayers()
+     */
     public void setPlayers(Map<String, PlayerData> players) {
         this.players = players;
-    }
-
-    public NbtCompound writeNbt(NbtCompound nbt) {
-        NbtCompound playersNbt = new NbtCompound();
-        players.forEach((uuid, playerData) -> {
-            NbtCompound playerNbt = new NbtCompound();
-
-            NbtList attributeIDsList = new NbtList();
-            playerData.attributeIdentifiers.forEach(id -> {
-                NbtString nbtString = NbtString.of(id);
-                attributeIDsList.add(nbtString);
-            });
-
-            NbtList attributeValuesList = new NbtList();
-            playerData.attributeValues.forEach(value -> {
-                NbtDouble nbtDouble = NbtDouble.of(value);
-                attributeValuesList.add(nbtDouble);
-            });
-
-            playerNbt.put("attributeIdentifiers", attributeIDsList);
-            playerNbt.put("attributeValues", attributeValuesList);
-
-            playersNbt.put(uuid, playerNbt);
-        });
-
-        nbt.put("players", playersNbt);
-
-        return nbt;
-    }
-
-    public static StateManager createFromNbt(NbtCompound tag, RegistryWrapper.WrapperLookup registryLookup) {
-        StateManager state = new StateManager();
-        NbtCompound players = tag.getCompound("players").orElseThrow();
-        players.getKeys().forEach(key -> {
-            PlayerData playerData = new PlayerData();
-
-            NbtList IDsList = players.getCompound(key).orElseThrow().getList("attributeIdentifiers").orElseThrow();
-            NbtList valuesList = players.getCompound(key).orElseThrow().getList("attributeValues").orElseThrow();
-            ArrayList<String> attributeIdentifiers = new ArrayList<>();
-            ArrayList<Double> attributeValues = new ArrayList<>();
-            for(int i = 0; i < IDsList.size(); i++) {
-                attributeIdentifiers.add(IDsList.getString(i, ""));
-                attributeValues.add(valuesList.getDouble(i, 1.0));
-            }
-
-            playerData.attributeIdentifiers = attributeIdentifiers;
-            playerData.attributeValues = attributeValues;
-
-            UUID uuid = UUID.fromString(key);
-
-            state.players.put(uuid.toString(), playerData);
-        });
-
-        return state;
-    }
-
-    public static StateManager createNew() {
-        StateManager state = new StateManager();
-        state.players = new HashMap<>();
-        return state;
     }
 
     public static final Codec<StateManager> CODEC = RecordCodecBuilder.create(instance -> instance.group(
@@ -115,10 +65,18 @@ public class StateManager extends PersistentState {
             null // Supposed to be an 'DataFixTypes' enum, but we can just pass null
     );
 
-    public static StateManager getServerState(MinecraftServer server) {
+    /**
+     * Retrieves an instance of {@link StateManager} from a corresponding {@link MinecraftServer}
+     * @param server A {@link MinecraftServer} instance
+     * @return The corresponding Forgineer {@link StateManager}
+     * @throws NullPointerException if {@code server} does not have a valid {@link World#OVERWORLD}
+     */
+    public static StateManager getServerState(MinecraftServer server) throws NullPointerException {
         // (Note: arbitrary choice to use 'World.OVERWORLD' instead of 'World.END' or 'World.NETHER'.  Any work)
         ServerWorld serverWorld = server.getWorld(World.OVERWORLD);
-        assert serverWorld != null;
+        if(serverWorld == null) {
+            throw new NullPointerException("serverWorld is empty");
+        }
 
         // The first time the following 'getOrCreate' function is called, it creates a brand new 'StateManager' and
         // stores it inside the 'PersistentStateManager'. The subsequent calls to 'getOrCreate' pass in the saved
@@ -133,14 +91,5 @@ public class StateManager extends PersistentState {
         state.markDirty();
 
         return state;
-    }
-
-    public static PlayerData getPlayerState(LivingEntity player) {
-        StateManager serverState = getServerState(player.getWorld().getServer());
-
-        // Either get the player by the uuid, or we don't have data for him yet, make a new player state
-        PlayerData playerState = serverState.players.computeIfAbsent(player.getUuid().toString(), uuid -> new PlayerData());
-
-        return playerState;
     }
 }

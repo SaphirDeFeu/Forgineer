@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "forgineer:molten_iron",
+    "forgineer:molten_gold",
+    "forgineer:molten_copper"
+  ]
+}

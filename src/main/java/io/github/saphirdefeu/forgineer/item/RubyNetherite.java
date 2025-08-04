@@ -2,22 +2,15 @@ package io.github.saphirdefeu.forgineer.item;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
-import io.github.saphirdefeu.forgineer.Forgineer;
-import io.github.saphirdefeu.forgineer.state.PlayerData;
-import io.github.saphirdefeu.forgineer.state.StateManager;
 import net.minecraft.entity.attribute.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class RubyNetherite extends Item {
 
@@ -39,9 +32,9 @@ public class RubyNetherite extends Item {
             return ActionResult.PASS;
         }
 
-        final double healthModifier = user.getAttributes().getValue(EntityAttributes.MAX_HEALTH);
+        final double healthModifier = user.getAttributes().getValue(EntityAttributes.MAX_HEALTH) - 20.0f;
 
-        if(healthModifier >= 40.0f) {
+        if(healthModifier >= 20.0f) {
             user.sendMessage(
                     Text.translatable("forgineer.text.consume_gemstone_fail", user.getStackInHand(hand).getName())
                             .formatted(Formatting.DARK_RED, Formatting.BOLD),
@@ -53,52 +46,11 @@ public class RubyNetherite extends Item {
             return ActionResult.FAIL;
         }
 
-        // Retrieve Server State
-        MinecraftServer server = world.getServer();
-        assert server != null;
-        StateManager serverState = StateManager.getServerState(server);
-
         Multimap<RegistryEntry<EntityAttribute>, EntityAttributeModifier> modifierMultimap = ArrayListMultimap.create();
         modifierMultimap.put(EntityAttributes.MAX_HEALTH, entityAttributeModifier);
         user.getAttributes().addTemporaryModifiers(modifierMultimap);
 
-        // Modify the modifier on the server state
-        Double attributeValue = entityAttributeModifier.value();
-        String attributeID = entityAttributeModifier.id().toString();
-        String UUID = user.getUuidAsString();
-
-        HashMap<String, PlayerData> players = serverState.getPlayers();
-
-        if(players.containsKey(UUID)) {
-            PlayerData playerData = players.get(UUID);
-            ArrayList<String> attributeIdentifiers = playerData.getAttributeIdentifiers();
-            ArrayList<Double> attributeValues = playerData.getAttributeValues();
-            boolean hasAttribute = false;
-            for(int i = 0; i < attributeValues.size(); i++) {
-                if(attributeID.equals(attributeIdentifiers.get(i))) {
-                    hasAttribute = true;
-                    attributeValues.set(i, attributeValue);
-                    break;
-                }
-            }
-
-            if(!hasAttribute) {
-                attributeIdentifiers.add(attributeID);
-                attributeValues.add(attributeValue);
-            }
-
-            playerData.setAttributeIdentifiers(attributeIdentifiers);
-            playerData.setAttributeValues(attributeValues);
-        } else {
-            ArrayList<String> attributeIdentifiers = new ArrayList<>();
-            ArrayList<Double> attributeValues = new ArrayList<>();
-            attributeIdentifiers.add(attributeID);
-            attributeValues.add(attributeValue);
-
-            players.put(UUID, new PlayerData(attributeIdentifiers, attributeValues));
-        }
-
-        serverState.setPlayers(players);
+        Gemstone.saveAttributeModifier(world, user, entityAttributeModifier);
 
         user.sendMessage(
                 Text.translatable("forgineer.text.consume_gemstone_success", user.getStackInHand(hand).getName())

@@ -10,6 +10,9 @@ import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
@@ -46,7 +49,9 @@ public class PlayConnectionListener {
             );
 
             Multimap<RegistryEntry<EntityAttribute>, EntityAttributeModifier> modifierMultimap = ArrayListMultimap.create();
-            modifierMultimap.put(EntityAttributes.MAX_HEALTH, entityAttributeModifier);
+            // Convert Attribute ID to RegistryEntry
+            RegistryEntry<EntityAttribute> attributeEntry = Registries.ATTRIBUTE.getEntry(Registries.ATTRIBUTE.get(entityAttributeModifier.id()));
+            modifierMultimap.put(attributeEntry, entityAttributeModifier);
             player.getAttributes().addTemporaryModifiers(modifierMultimap);
         }
     }

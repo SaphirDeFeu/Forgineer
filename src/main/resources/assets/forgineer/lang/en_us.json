@@ -21,6 +21,13 @@
 
   "effect.forgineer.hot_hand": "Hot Hand",
 
+  "tag.item.forgineer.molten_metals": "Molten Metals",
+  "tag.item.forgineer.uncut_gems": "Uncut Gemstones",
+  "tag.item.forgineer.cut_gems": "Cut Gemstones",
+  "tag.item.forgineer.netherite_gems": "Gemstone-Infused Netherite Ingots",
+  "tag.item.forgineer.rubies": "Rubies",
+  "tag.item.forgineer.bloodstones": "Bloodstones",
+
   "forgineer.text.consume_gemstone_success": "The %1$s seems to bring you additional powers...",
   "forgineer.text.consume_gemstone_fail": "You have nothing to gain from this...",
 

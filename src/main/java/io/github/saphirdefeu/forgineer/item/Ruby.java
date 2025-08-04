@@ -31,9 +31,9 @@ public class Ruby extends Item {
 
         double healthModifier = user.getAttributes().getValue(EntityAttributes.MAX_HEALTH) - 20.0f;
 
-        if(healthModifier > 8.0f) {
+        if(healthModifier >= 10.0f) {
             user.sendMessage(
-                    Text.translatable("forgineer.text.consume_gemstone_fail", user.getStackInHand(hand).getName())
+                    Text.translatable("forgineer.text.consume_gemstone_fail")
                             .formatted(Formatting.DARK_RED, Formatting.BOLD),
                     false
             );

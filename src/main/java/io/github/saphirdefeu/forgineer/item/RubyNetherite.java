@@ -36,7 +36,7 @@ public class RubyNetherite extends Item {
 
         if(healthModifier >= 20.0f) {
             user.sendMessage(
-                    Text.translatable("forgineer.text.consume_gemstone_fail", user.getStackInHand(hand).getName())
+                    Text.translatable("forgineer.text.consume_gemstone_fail")
                             .formatted(Formatting.DARK_RED, Formatting.BOLD),
                     false
             );

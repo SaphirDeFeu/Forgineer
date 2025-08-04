@@ -6,7 +6,6 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -35,6 +34,16 @@ public class ModBlocks {
                     .requiresTool()
                     .hardness(2.0f)
                     .resistance(7.5f),
+            true
+    );
+
+    public static final Block BLOODSTONE_ORE = register("bloodstone_ore", Block::new,
+            AbstractBlock.Settings.create()
+                    .sounds(BlockSoundGroup.AMETHYST_BLOCK)
+                    .requiresTool()
+                    .hardness(2.0f)
+                    .resistance(7.5f)
+                    .luminance(blockState -> 9),
             true
     );
 
@@ -72,6 +81,7 @@ public class ModBlocks {
                 .register((itemGroup) -> {
                     itemGroup.add(ModBlocks.GRAPHITE.asItem());
                     itemGroup.add(ModBlocks.RUBY_ORE.asItem());
+                    itemGroup.add(ModBlocks.BLOODSTONE_ORE.asItem());
                 });
     }
 

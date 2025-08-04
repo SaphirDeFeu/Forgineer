@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "forgineer:ruby_ore"
+    "forgineer:ruby_ore",
+    "forgineer:bloodstone_ore"
   ]
 }

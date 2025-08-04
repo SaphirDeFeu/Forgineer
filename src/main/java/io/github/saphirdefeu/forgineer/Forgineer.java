@@ -19,6 +19,7 @@ public class Forgineer implements ModInitializer {
 
     public static final RegistryKey<PlacedFeature> GRAPHITE_PLACED_KEY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Forgineer.MOD_ID, "ore_graphite"));
     public static final RegistryKey<PlacedFeature> RUBY_ORE_PLACED_KEY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Forgineer.MOD_ID, "ore_ruby"));
+    public static final RegistryKey<PlacedFeature> BLOODSTONE_ORE_PLACED_KEY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Forgineer.MOD_ID, "ore_bloodstone"));
 
     @Override
     public void onInitialize() {
@@ -33,6 +34,7 @@ public class Forgineer implements ModInitializer {
 
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, GRAPHITE_PLACED_KEY);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(RegistryKey.of(RegistryKeys.BIOME, Identifier.of("minecraft:lush_caves"))), GenerationStep.Feature.UNDERGROUND_ORES, RUBY_ORE_PLACED_KEY);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(RegistryKey.of(RegistryKeys.BIOME, Identifier.of("minecraft:dripstone_caves"))), GenerationStep.Feature.UNDERGROUND_ORES, BLOODSTONE_ORE_PLACED_KEY);
 
         EventRegistrar.registerEvents();
     }

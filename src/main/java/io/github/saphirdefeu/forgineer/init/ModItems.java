@@ -1,9 +1,7 @@
 package io.github.saphirdefeu.forgineer.init;
 
 import io.github.saphirdefeu.forgineer.Forgineer;
-import io.github.saphirdefeu.forgineer.item.MoltenMetal;
-import io.github.saphirdefeu.forgineer.item.Ruby;
-import io.github.saphirdefeu.forgineer.item.RubyNetherite;
+import io.github.saphirdefeu.forgineer.item.*;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -40,6 +38,10 @@ public class ModItems {
     public static final Item RUBY = register("ruby", Ruby::new, Ruby.settings);
     public static final Item RUBY_NETHERITE = register("ruby_netherite", RubyNetherite::new, RubyNetherite.settings);
 
+    public static final Item UNCUT_BLOODSTONE = register("uncut_bloodstone", Item::new, new Item.Settings());
+    public static final Item BLOODSTONE = register("bloodstone", Bloodstone::new, Bloodstone.settings);
+    public static final Item BLOODSTONE_NETHERITE = register("bloodstone_netherite", BloodstoneNetherite::new, BloodstoneNetherite.settings);
+
     private static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
         // Create item key, item instance, and register the item instance.
         RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, name));
@@ -65,6 +67,10 @@ public class ModItems {
                     itemGroup.add(UNCUT_RUBY);
                     itemGroup.add(RUBY);
                     itemGroup.add(RUBY_NETHERITE);
+
+                    itemGroup.add(UNCUT_BLOODSTONE);
+                    itemGroup.add(BLOODSTONE);
+                    itemGroup.add(BLOODSTONE_NETHERITE);
                 }
         );
     }

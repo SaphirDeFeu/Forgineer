@@ -14,10 +14,15 @@
   "item.forgineer.uncut_bloodstone": "Bloodstone Fragments",
   "item.forgineer.bloodstone": "Bloodstone",
   "item.forgineer.bloodstone_netherite": "Blood-Infused Netherite Ingot",
+  "item.forgineer.onyx_ore": "Onyx Ore",
+  "item.forgineer.uncut_onyx": "Uncut Onyx",
+  "item.forgineer.onyx": "Cut Onyx",
+  "item.forgineer.onyx_netherite": "Onyx-Infused Netherite Ingot",
 
   "block.forgineer.graphite": "Graphite",
   "block.forgineer.ruby_ore": "Ruby Ore",
   "block.forgineer.bloodstone_ore": "Bloodstone Ore",
+  "block.forgineer.onyx_ore": "Onyx Ore",
 
   "effect.forgineer.hot_hand": "Hot Hand",
 
@@ -27,6 +32,7 @@
   "tag.item.forgineer.netherite_gems": "Gemstone-Infused Netherite Ingots",
   "tag.item.forgineer.rubies": "Rubies",
   "tag.item.forgineer.bloodstones": "Bloodstones",
+  "tag.item.forgineer.onyxes": "Onyxes",
 
   "forgineer.text.consume_gemstone_success": "The %1$s seems to bring you additional powers...",
   "forgineer.text.consume_gemstone_fail": "You have nothing to gain from this...",

@@ -42,6 +42,10 @@ public class ModItems {
     public static final Item BLOODSTONE = register("bloodstone", Bloodstone::new, Bloodstone.settings);
     public static final Item BLOODSTONE_NETHERITE = register("bloodstone_netherite", BloodstoneNetherite::new, BloodstoneNetherite.settings);
 
+    public static final Item UNCUT_ONYX = register("uncut_onyx", Item::new, new Item.Settings());
+    public static final Item ONYX = register("onyx", Onyx::new, Onyx.settings);
+    public static final Item ONYX_NETHERITE = register("onyx_netherite", OnyxNetherite::new, OnyxNetherite.settings);
+
     private static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
         // Create item key, item instance, and register the item instance.
         RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, name));
@@ -71,6 +75,10 @@ public class ModItems {
                     itemGroup.add(UNCUT_BLOODSTONE);
                     itemGroup.add(BLOODSTONE);
                     itemGroup.add(BLOODSTONE_NETHERITE);
+
+                    itemGroup.add(UNCUT_ONYX);
+                    itemGroup.add(ONYX);
+                    itemGroup.add(ONYX_NETHERITE);
                 }
         );
     }

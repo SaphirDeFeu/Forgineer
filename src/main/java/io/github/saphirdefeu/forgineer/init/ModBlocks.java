@@ -48,6 +48,16 @@ public class ModBlocks {
             true
     );
 
+    public static final Block ONYX_ORE = register("onyx_ore", Block::new,
+            AbstractBlock.Settings.create()
+                    .sounds(BlockSoundGroup.AMETHYST_BLOCK)
+                    .requiresTool()
+                    .hardness(2.0f)
+                    .resistance(7.5f)
+                    .luminance(blockState -> 5),
+            true
+    );
+
     private static Block register(
             String name,
             Function<AbstractBlock.Settings, Block> blockFactory,
@@ -83,6 +93,7 @@ public class ModBlocks {
                     itemGroup.add(ModBlocks.GRAPHITE.asItem());
                     itemGroup.add(ModBlocks.RUBY_ORE.asItem());
                     itemGroup.add(ModBlocks.BLOODSTONE_ORE.asItem());
+                    itemGroup.add(ModBlocks.ONYX_ORE.asItem());
                 });
     }
 

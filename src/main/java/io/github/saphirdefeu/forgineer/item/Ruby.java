@@ -30,7 +30,7 @@ public class Ruby extends Item {
             return ActionResult.PASS;
         }
 
-        double healthModifier = user.getAttributes().getValue(EntityAttributes.MAX_HEALTH) - 20.0f;
+        double healthModifier = user.getAttributes().getModifierValue(EntityAttributes.MAX_HEALTH, Identifier.of(Forgineer.MOD_ID, "gemstone"));
 
         if(healthModifier >= 10.0f) {
             user.sendMessage(

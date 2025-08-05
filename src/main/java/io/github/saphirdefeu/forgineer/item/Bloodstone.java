@@ -30,7 +30,7 @@ public class Bloodstone extends Item {
             return ActionResult.PASS;
         }
 
-        double attackModifier = user.getAttributes().getValue(EntityAttributes.ATTACK_DAMAGE) - 1.0f;
+        double attackModifier = user.getAttributes().getModifierValue(EntityAttributes.ATTACK_DAMAGE, Identifier.of(Forgineer.MOD_ID, "gemstone"));
 
         if(attackModifier >= 5.0f) {
             user.sendMessage(

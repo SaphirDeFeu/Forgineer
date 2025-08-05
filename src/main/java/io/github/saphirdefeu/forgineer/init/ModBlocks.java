@@ -33,7 +33,8 @@ public class ModBlocks {
                     .sounds(BlockSoundGroup.AMETHYST_BLOCK)
                     .requiresTool()
                     .hardness(2.0f)
-                    .resistance(7.5f),
+                    .resistance(7.5f)
+                    .luminance(blockState -> 9),
             true
     );
 

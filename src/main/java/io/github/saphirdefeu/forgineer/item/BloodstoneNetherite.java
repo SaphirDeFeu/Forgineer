@@ -3,6 +3,7 @@ package io.github.saphirdefeu.forgineer.item;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import io.github.saphirdefeu.forgineer.Forgineer;
+import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -35,7 +36,15 @@ public class BloodstoneNetherite extends Item {
             return ActionResult.PASS;
         }
 
-        final double attackModifier = user.getAttributes().getModifierValue(EntityAttributes.ATTACK_DAMAGE, Identifier.of(Forgineer.MOD_ID, "gemstone"));
+        double attackModifier = 0.0;
+
+        // Check if the modifier forgineer:gemstone exists.
+        // If true, then set modifier to that value
+        // Otherwise, leave it at 0
+        AttributeContainer attributes = user.getAttributes();
+        if(attributes.hasModifierForAttribute(EntityAttributes.ATTACK_DAMAGE, Identifier.of(Forgineer.MOD_ID, "gemstone"))) {
+            attackModifier = user.getAttributes().getModifierValue(EntityAttributes.ATTACK_DAMAGE, Identifier.of(Forgineer.MOD_ID, "gemstone"));
+        }
 
         if(attackModifier >= 5.0f) {
             user.sendMessage(

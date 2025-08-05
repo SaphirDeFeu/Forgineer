@@ -3,6 +3,7 @@ package io.github.saphirdefeu.forgineer.item;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import io.github.saphirdefeu.forgineer.Forgineer;
+import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -30,7 +31,15 @@ public class Onyx extends Item {
             return ActionResult.PASS;
         }
 
-        double armorModifier = user.getAttributes().getModifierValue(EntityAttributes.ARMOR, Identifier.of(Forgineer.MOD_ID, "gemstone"));
+        double armorModifier = 0.0;
+
+        // Check if the modifier forgineer:gemstone exists.
+        // If true, then set modifier to that value
+        // Otherwise, leave it at 0
+        AttributeContainer attributes = user.getAttributes();
+        if(attributes.hasModifierForAttribute(EntityAttributes.ARMOR, Identifier.of(Forgineer.MOD_ID, "gemstone"))) {
+            armorModifier = user.getAttributes().getModifierValue(EntityAttributes.ARMOR, Identifier.of(Forgineer.MOD_ID, "gemstone"));
+        }
 
         if(armorModifier >= 6.0f) {
             user.sendMessage(

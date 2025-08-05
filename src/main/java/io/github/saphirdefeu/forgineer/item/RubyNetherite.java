@@ -33,7 +33,15 @@ public class RubyNetherite extends Item {
             return ActionResult.PASS;
         }
 
-        final double healthModifier = user.getAttributes().getModifierValue(EntityAttributes.MAX_HEALTH, Identifier.of(Forgineer.MOD_ID, "gemstone"));
+        double healthModifier = 0.0;
+
+        // Check if the modifier forgineer:gemstone exists.
+        // If true, then set modifier to that value
+        // Otherwise, leave it at 0
+        AttributeContainer attributes = user.getAttributes();
+        if(attributes.hasModifierForAttribute(EntityAttributes.MAX_HEALTH, Identifier.of(Forgineer.MOD_ID, "gemstone"))) {
+            healthModifier = user.getAttributes().getModifierValue(EntityAttributes.MAX_HEALTH, Identifier.of(Forgineer.MOD_ID, "gemstone"));
+        }
 
         if(healthModifier >= 20.0f) {
             user.sendMessage(

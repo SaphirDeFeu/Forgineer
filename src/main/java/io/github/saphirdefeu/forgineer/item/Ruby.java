@@ -3,6 +3,7 @@ package io.github.saphirdefeu.forgineer.item;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import io.github.saphirdefeu.forgineer.Forgineer;
+import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -30,7 +31,15 @@ public class Ruby extends Item {
             return ActionResult.PASS;
         }
 
-        double healthModifier = user.getAttributes().getModifierValue(EntityAttributes.MAX_HEALTH, Identifier.of(Forgineer.MOD_ID, "gemstone"));
+        double healthModifier = 0.0;
+
+        // Check if the modifier forgineer:gemstone exists.
+        // If true, then set modifier to that value
+        // Otherwise, leave it at 0
+        AttributeContainer attributes = user.getAttributes();
+        if(attributes.hasModifierForAttribute(EntityAttributes.MAX_HEALTH, Identifier.of(Forgineer.MOD_ID, "gemstone"))) {
+            healthModifier = user.getAttributes().getModifierValue(EntityAttributes.MAX_HEALTH, Identifier.of(Forgineer.MOD_ID, "gemstone"));
+        }
 
         if(healthModifier >= 10.0f) {
             user.sendMessage(

@@ -2,8 +2,11 @@ package io.github.saphirdefeu.forgineer.item;
 
 import io.github.saphirdefeu.forgineer.state.PlayerData;
 import io.github.saphirdefeu.forgineer.state.StateManager;
+import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 
@@ -11,15 +14,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class Gemstone {
-    public static void saveAttributeModifier(World world, PlayerEntity user, EntityAttributeModifier attribute) {
+    public static void saveAttributeModifier(World world, PlayerEntity user, EntityAttributeModifier attributeModifier, RegistryEntry<EntityAttribute> attribute) {
         // Retrieve Server State
         MinecraftServer server = world.getServer();
         assert server != null;
         StateManager serverState = StateManager.getServerState(server);
 
         // Modify the modifier on the server state
-        Double attributeValue = attribute.value();
-        String attributeID = attribute.id().toString();
+        Double attributeValue = attributeModifier.value();
+        String attributeID = attribute.getIdAsString();
         String UUID = user.getUuidAsString();
 
         HashMap<String, PlayerData> players = serverState.getPlayers();

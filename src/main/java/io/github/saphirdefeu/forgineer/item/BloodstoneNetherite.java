@@ -2,6 +2,7 @@ package io.github.saphirdefeu.forgineer.item;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import io.github.saphirdefeu.forgineer.Forgineer;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -17,7 +18,7 @@ import net.minecraft.world.World;
 public class BloodstoneNetherite extends Item {
 
     private static final EntityAttributeModifier entityAttributeModifier = new EntityAttributeModifier(
-            Identifier.of("minecraft:attack_damage"), 5.0, EntityAttributeModifier.Operation.ADD_VALUE
+            Identifier.of(Forgineer.MOD_ID, "gemstone"), 8.0, EntityAttributeModifier.Operation.ADD_VALUE
     );
 
     public static final Settings settings = new Settings()
@@ -52,7 +53,7 @@ public class BloodstoneNetherite extends Item {
         modifierMultimap.put(EntityAttributes.ATTACK_DAMAGE, entityAttributeModifier);
         user.getAttributes().addTemporaryModifiers(modifierMultimap);
 
-        Gemstone.saveAttributeModifier(world, user, entityAttributeModifier);
+        Gemstone.saveAttributeModifier(world, user, entityAttributeModifier, EntityAttributes.ATTACK_DAMAGE);
 
         user.sendMessage(
                 Text.translatable("forgineer.text.consume_gemstone_success", user.getStackInHand(hand).getName())

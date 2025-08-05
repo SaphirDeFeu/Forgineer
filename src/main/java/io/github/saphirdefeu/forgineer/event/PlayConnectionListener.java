@@ -45,12 +45,12 @@ public class PlayConnectionListener {
             double attributeValue = attributeValues.get(i);
 
             EntityAttributeModifier entityAttributeModifier = new EntityAttributeModifier(
-                    Identifier.of(attributeIdentifier), attributeValue, EntityAttributeModifier.Operation.ADD_VALUE
+                    Identifier.of(Forgineer.MOD_ID, "gemstone"), attributeValue, EntityAttributeModifier.Operation.ADD_VALUE
             );
 
             Multimap<RegistryEntry<EntityAttribute>, EntityAttributeModifier> modifierMultimap = ArrayListMultimap.create();
             // Convert Attribute ID to RegistryEntry
-            RegistryEntry<EntityAttribute> attributeEntry = Registries.ATTRIBUTE.getEntry(Registries.ATTRIBUTE.get(entityAttributeModifier.id()));
+            RegistryEntry<EntityAttribute> attributeEntry = Registries.ATTRIBUTE.getEntry(Registries.ATTRIBUTE.get(Identifier.of(attributeIdentifier)));
             modifierMultimap.put(attributeEntry, entityAttributeModifier);
             player.getAttributes().addTemporaryModifiers(modifierMultimap);
         }

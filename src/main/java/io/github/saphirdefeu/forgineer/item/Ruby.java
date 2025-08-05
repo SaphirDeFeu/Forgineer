@@ -2,6 +2,7 @@ package io.github.saphirdefeu.forgineer.item;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import io.github.saphirdefeu.forgineer.Forgineer;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -44,13 +45,13 @@ public class Ruby extends Item {
         }
 
         EntityAttributeModifier entityAttributeModifier = new EntityAttributeModifier(
-                Identifier.of("minecraft:max_health"), healthModifier + 2.0f, EntityAttributeModifier.Operation.ADD_VALUE
+                Identifier.of(Forgineer.MOD_ID, "gemstone"), healthModifier + 2.0f, EntityAttributeModifier.Operation.ADD_VALUE
         );
         Multimap<RegistryEntry<EntityAttribute>, EntityAttributeModifier> modifierMultimap = ArrayListMultimap.create();
         modifierMultimap.put(EntityAttributes.MAX_HEALTH, entityAttributeModifier);
         user.getAttributes().addTemporaryModifiers(modifierMultimap);
 
-        Gemstone.saveAttributeModifier(world, user, entityAttributeModifier);
+        Gemstone.saveAttributeModifier(world, user, entityAttributeModifier, EntityAttributes.MAX_HEALTH);
 
         user.sendMessage(
                 Text.translatable("forgineer.text.consume_gemstone_success", user.getStackInHand(hand).getName())

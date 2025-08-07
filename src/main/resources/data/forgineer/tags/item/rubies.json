@@ -1,5 +1,5 @@
 {
-  "replace": "false",
+  "replace": false,
   "values": [
     "forgineer:uncut_ruby",
     "forgineer:ruby",

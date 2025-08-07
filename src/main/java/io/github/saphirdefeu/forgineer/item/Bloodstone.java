@@ -40,7 +40,7 @@ public class Bloodstone extends Item {
         if(attributes.hasModifierForAttribute(EntityAttributes.ATTACK_DAMAGE, Identifier.of(Forgineer.MOD_ID, "gemstone"))) {
             attackModifier = user.getAttributes().getModifierValue(EntityAttributes.ATTACK_DAMAGE, Identifier.of(Forgineer.MOD_ID, "gemstone"));
         }
-        
+
         if(attackModifier >= 5.0f) {
             user.sendMessage(
                     Text.translatable("forgineer.text.consume_gemstone_fail")

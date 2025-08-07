@@ -4,7 +4,6 @@
   "group": "casting_mold",
   "ingredients": [
     "forgineer:used_casting_mold",
-    "minecraft:water_bucket",
     "forgineer:graphite_powder"
   ],
   "result": {

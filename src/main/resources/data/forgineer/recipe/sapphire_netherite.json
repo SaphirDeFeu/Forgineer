@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "eee",
+    "eNe",
+    "eee"
+  ],
+  "key": {
+    "e": "forgineer:sapphire",
+    "N": "minecraft:netherite_ingot"
+  },
+  "result": {
+    "id": "forgineer:sapphire_netherite"
+  }
+}

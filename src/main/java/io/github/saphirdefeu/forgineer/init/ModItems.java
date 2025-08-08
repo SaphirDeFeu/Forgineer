@@ -46,6 +46,10 @@ public class ModItems {
     public static final Item ONYX = register("onyx", Onyx::new, Onyx.settings);
     public static final Item ONYX_NETHERITE = register("onyx_netherite", OnyxNetherite::new, OnyxNetherite.settings);
 
+    public static final Item UNCUT_SAPPHIRE = register("uncut_sapphire", Item::new, new Item.Settings());
+    public static final Item SAPPHIRE = register("sapphire", Sapphire::new, Sapphire.settings);
+    public static final Item SAPPHIRE_NETHERITE = register("sapphire_netherite", SapphireNetherite::new, SapphireNetherite.settings);
+
     private static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
         // Create item key, item instance, and register the item instance.
         RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, name));
@@ -79,6 +83,10 @@ public class ModItems {
                     itemGroup.add(UNCUT_ONYX);
                     itemGroup.add(ONYX);
                     itemGroup.add(ONYX_NETHERITE);
+
+                    itemGroup.add(UNCUT_SAPPHIRE);
+                    itemGroup.add(SAPPHIRE);
+                    itemGroup.add(SAPPHIRE_NETHERITE);
                 }
         );
     }

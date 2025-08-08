@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "forgineer:ruby_ore",
+    "forgineer:bloodstone_ore",
+    "forgineer:onyx_ore",
+    "forgineer:sapphire_ore"
+  ]
+}

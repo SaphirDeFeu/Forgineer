@@ -46,7 +46,7 @@ public class BloodstoneNetherite extends Item {
             attackModifier = user.getAttributes().getModifierValue(EntityAttributes.ATTACK_DAMAGE, Identifier.of(Forgineer.MOD_ID, "gemstone"));
         }
 
-        if(attackModifier >= 5.0f) {
+        if(attackModifier >= 8.0f) {
             user.sendMessage(
                     Text.translatable("forgineer.text.consume_gemstone_fail", user.getStackInHand(hand).getName())
                             .formatted(Formatting.DARK_RED, Formatting.BOLD),

@@ -46,7 +46,7 @@ public class OnyxNetherite extends Item {
             armorModifier = user.getAttributes().getModifierValue(EntityAttributes.ARMOR, Identifier.of(Forgineer.MOD_ID, "gemstone"));
         }
 
-        if(armorModifier >= 10.0f) {
+        if(armorModifier >= 8.0f) {
             user.sendMessage(
                     Text.translatable("forgineer.text.consume_gemstone_fail", user.getStackInHand(hand).getName())
                             .formatted(Formatting.DARK_RED, Formatting.BOLD),

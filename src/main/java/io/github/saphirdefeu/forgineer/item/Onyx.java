@@ -41,7 +41,7 @@ public class Onyx extends Item {
             armorModifier = user.getAttributes().getModifierValue(EntityAttributes.ARMOR, Identifier.of(Forgineer.MOD_ID, "gemstone"));
         }
 
-        if(armorModifier >= 6.0f) {
+        if(armorModifier > 4.0f) {
             user.sendMessage(
                     Text.translatable("forgineer.text.consume_gemstone_fail")
                             .formatted(Formatting.DARK_RED, Formatting.BOLD),
@@ -54,7 +54,7 @@ public class Onyx extends Item {
         }
 
         EntityAttributeModifier entityAttributeModifier = new EntityAttributeModifier(
-                Identifier.of(Forgineer.MOD_ID, "gemstone"), armorModifier + 2.0f, EntityAttributeModifier.Operation.ADD_VALUE
+                Identifier.of(Forgineer.MOD_ID, "gemstone"), armorModifier + 1.0f, EntityAttributeModifier.Operation.ADD_VALUE
         );
         Multimap<RegistryEntry<EntityAttribute>, EntityAttributeModifier> modifierMultimap = ArrayListMultimap.create();
         modifierMultimap.put(EntityAttributes.ARMOR, entityAttributeModifier);

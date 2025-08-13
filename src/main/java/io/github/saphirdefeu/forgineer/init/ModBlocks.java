@@ -67,6 +67,15 @@ public class ModBlocks {
             true
     );
 
+    public static final Block AQUAMARINE_ORE = register("aquamarine_ore", Block::new,
+            AbstractBlock.Settings.create()
+                    .sounds(BlockSoundGroup.AMETHYST_BLOCK)
+                    .requiresTool()
+                    .hardness(1.6f)
+                    .resistance(6.5f),
+            true
+    );
+
     private static Block register(
             String name,
             Function<AbstractBlock.Settings, Block> blockFactory,
@@ -104,6 +113,7 @@ public class ModBlocks {
                     itemGroup.add(ModBlocks.BLOODSTONE_ORE.asItem());
                     itemGroup.add(ModBlocks.ONYX_ORE.asItem());
                     itemGroup.add(ModBlocks.SAPPHIRE_ORE.asItem());
+                    itemGroup.add(ModBlocks.AQUAMARINE_ORE.asItem());
                 });
     }
 

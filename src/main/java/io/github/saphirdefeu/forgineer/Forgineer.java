@@ -25,6 +25,7 @@ public class Forgineer implements ModInitializer {
     public static final RegistryKey<PlacedFeature> ONYX_ORE_PLACED_KEY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Forgineer.MOD_ID, "ore_onyx"));
     public static final RegistryKey<PlacedFeature> SAPPHIRE_ORE_PLACED_KEY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Forgineer.MOD_ID, "ore_sapphire"));
     public static final RegistryKey<PlacedFeature> AQUAMARINE_ORE_PLACED_KEY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Forgineer.MOD_ID, "ore_aquamarine"));
+    public static final RegistryKey<PlacedFeature> TOPAZ_ORE_PLACED_KEY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(Forgineer.MOD_ID, "ore_topaz"));
 
     @Override
     public void onInitialize() {
@@ -43,6 +44,7 @@ public class Forgineer implements ModInitializer {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(RegistryKey.of(RegistryKeys.BIOME, Identifier.of("minecraft:deep_dark"))), GenerationStep.Feature.UNDERGROUND_ORES, ONYX_ORE_PLACED_KEY);
         BiomeModifications.addFeature(BiomeSelectors.tag(TagKey.of(RegistryKeys.BIOME, Identifier.of("c:is_cold"))), GenerationStep.Feature.UNDERGROUND_ORES, SAPPHIRE_ORE_PLACED_KEY);
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_OCEAN), GenerationStep.Feature.UNDERGROUND_ORES, AQUAMARINE_ORE_PLACED_KEY);
+        BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_ORES, TOPAZ_ORE_PLACED_KEY);
 
         EventRegistrar.registerEvents();
 

@@ -76,6 +76,16 @@ public class ModBlocks {
             true
     );
 
+    public static final Block TOPAZ_ORE = register("topaz_ore", Block::new,
+            AbstractBlock.Settings.create()
+                    .sounds(BlockSoundGroup.AMETHYST_BLOCK)
+                    .requiresTool()
+                    .hardness(2.5f)
+                    .resistance(10.0f)
+                    .luminance(blockState -> 15),
+            true
+    );
+
     private static Block register(
             String name,
             Function<AbstractBlock.Settings, Block> blockFactory,
@@ -114,6 +124,7 @@ public class ModBlocks {
                     itemGroup.add(ModBlocks.ONYX_ORE.asItem());
                     itemGroup.add(ModBlocks.SAPPHIRE_ORE.asItem());
                     itemGroup.add(ModBlocks.AQUAMARINE_ORE.asItem());
+                    itemGroup.add(ModBlocks.TOPAZ_ORE.asItem());
                 });
     }
 

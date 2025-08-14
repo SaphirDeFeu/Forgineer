@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "eee",
+    "eee",
+    "eee"
+  ],
+  "key": {
+    "e": "forgineer:uncut_topaz"
+  },
+  "result": {
+    "id": "forgineer:topaz"
+  }
+}

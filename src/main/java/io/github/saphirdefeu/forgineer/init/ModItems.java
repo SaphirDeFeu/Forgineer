@@ -54,6 +54,10 @@ public class ModItems {
     public static final Item AQUAMARINE = register("aquamarine", Aquamarine::new, Aquamarine.settings);
     public static final Item AQUAMARINE_NETHERITE = register("aquamarine_netherite", AquamarineNetherite::new, AquamarineNetherite.settings);
 
+    public static final Item UNCUT_TOPAZ = register("uncut_topaz", Item::new, new Item.Settings());
+    public static final Item TOPAZ = register("topaz", Topaz::new, Topaz.settings);
+    public static final Item TOPAZ_NETHERITE = register("topaz_netherite", TopazNetherite::new, TopazNetherite.settings);
+
     private static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
         // Create item key, item instance, and register the item instance.
         RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, name));
@@ -95,6 +99,10 @@ public class ModItems {
                     itemGroup.add(UNCUT_AQUAMARINE);
                     itemGroup.add(AQUAMARINE);
                     itemGroup.add(AQUAMARINE_NETHERITE);
+
+                    itemGroup.add(UNCUT_TOPAZ);
+                    itemGroup.add(TOPAZ);
+                    itemGroup.add(TOPAZ_NETHERITE);
                 }
         );
     }

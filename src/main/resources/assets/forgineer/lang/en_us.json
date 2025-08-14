@@ -26,6 +26,10 @@
   "item.forgineer.uncut_aquamarine": "Uncut Aquamarine",
   "item.forgineer.aquamarine": "Cut Aquamarine",
   "item.forgineer.aquamarine_netherite": "Aquamarine-Infused Netherite Ingot",
+  "item.forgineer.topaz_ore": "Topaz Ore",
+  "item.forgineer.uncut_topaz": "Uncut Topaz",
+  "item.forgineer.topaz": "Cut Topaz",
+  "item.forgineer.topaz_netherite": "Topaz-Infused Netherite Ingot",
 
   "block.forgineer.graphite": "Graphite",
   "block.forgineer.ruby_ore": "Ruby Ore",
@@ -33,6 +37,7 @@
   "block.forgineer.onyx_ore": "Onyx Ore",
   "block.forgineer.sapphire_ore": "Sapphire Ore",
   "block.forgineer.aquamarine_ore": "Aquamarine Ore",
+  "block.forgineer.topaz_ore": "Topaz Ore",
 
   "effect.forgineer.hot_hand": "Hot Hand",
 
@@ -45,6 +50,7 @@
   "tag.item.forgineer.onyxes": "Onyxes",
   "tag.item.forgineer.sapphires": "Sapphires",
   "tag.item.forgineer.aquamarines": "Aquamarines",
+  "tag.item.forgineer.topazes": "Topazes",
 
   "forgineer.text.consume_gemstone_success": "The %1$s seems to bring you additional powers...",
   "forgineer.text.consume_gemstone_fail": "You have nothing to gain from this...",

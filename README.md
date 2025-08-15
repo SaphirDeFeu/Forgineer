@@ -8,13 +8,11 @@ Move deep inside the earth to uncover hidden treasures and ores to upgrade your 
 - [✨Features](#features)
 - [❤️Contributing](#contributing)
 
-___
 ## ✨Features
 
 - A slightly different early game of burning molten metal.
 - Biome-specific gemstones capable of enhancing your character.
 
-___
 ## ❤️Contributing
 
 You can help contribute to this mod by [opening an issue](https://github.com/SaphirDeFeu/Forgineer/issues), or [creating a pull request](https://github.com/SaphirDeFeu/Forgineer/pulls).  

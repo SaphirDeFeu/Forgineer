@@ -1,13 +1,17 @@
 package io.github.saphirdefeu.forgineer.item;
 
+import io.github.saphirdefeu.forgineer.Forgineer;
 import io.github.saphirdefeu.forgineer.state.PlayerData;
 import io.github.saphirdefeu.forgineer.state.StateManager;
+import net.minecraft.block.Block;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
@@ -57,5 +61,23 @@ public abstract class Gemstone {
         }
 
         serverState.setPlayers(players);
+    }
+
+    public static boolean isGemstone(Block block) {
+        Identifier id = Registries.BLOCK.getId(block);
+
+        // Normally, we should be able to use a TagKey or TagEntry to check whether we are
+        // detecting a gemstone in the vicinity
+        // However, I cannot find such a way to make it work,
+        // so it is now hardcoded.
+        return switch (id.toString()) {
+            case "forgineer:ruby_ore",
+                 "forgineer:bloodstone_ore",
+                 "forgineer:onyx_ore",
+                 "forgineer:sapphire_ore",
+                 "forgineer:aquamarine_ore",
+                 "forgineer:topaz_ore" -> true;
+            default -> false;
+        };
     }
 }

@@ -9,7 +9,6 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Rarity;
 
 import java.util.function.Function;
 
@@ -58,6 +57,8 @@ public class ModItems {
     public static final Item TOPAZ = register("topaz", Topaz::new, Topaz.settings);
     public static final Item TOPAZ_NETHERITE = register("topaz_netherite", TopazNetherite::new, TopazNetherite.settings);
 
+    public static final Item GEMSTONE_DETECTOR = register("gemstone_detector", GemstoneDetector::new, GemstoneDetector.settings);
+
     private static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
         // Create item key, item instance, and register the item instance.
         RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, name));
@@ -103,6 +104,8 @@ public class ModItems {
                     itemGroup.add(UNCUT_TOPAZ);
                     itemGroup.add(TOPAZ);
                     itemGroup.add(TOPAZ_NETHERITE);
+
+                    itemGroup.add(GEMSTONE_DETECTOR);
                 }
         );
     }

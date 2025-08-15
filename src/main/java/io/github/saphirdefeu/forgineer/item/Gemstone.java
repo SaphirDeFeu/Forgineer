@@ -1,12 +1,10 @@
 package io.github.saphirdefeu.forgineer.item;
 
-import io.github.saphirdefeu.forgineer.Forgineer;
 import io.github.saphirdefeu.forgineer.state.PlayerData;
 import io.github.saphirdefeu.forgineer.state.StateManager;
 import net.minecraft.block.Block;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.entry.RegistryEntry;

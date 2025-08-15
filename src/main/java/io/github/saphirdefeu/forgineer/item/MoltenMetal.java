@@ -10,8 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.function.Consumer;
-
 public class MoltenMetal extends Item {
 
     public static final Settings settings = new Settings().fireproof();

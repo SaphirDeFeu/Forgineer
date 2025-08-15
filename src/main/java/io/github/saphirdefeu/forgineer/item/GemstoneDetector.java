@@ -1,6 +1,5 @@
 package io.github.saphirdefeu.forgineer.item;
 
-import io.github.saphirdefeu.forgineer.Forgineer;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;

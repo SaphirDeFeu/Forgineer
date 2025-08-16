@@ -11,6 +11,8 @@ base {
 }
 
 loom {
+    accessWidenerPath = file("src/main/resources/forgineer.accesswidener")
+
     splitEnvironmentSourceSets()
 
     mods {

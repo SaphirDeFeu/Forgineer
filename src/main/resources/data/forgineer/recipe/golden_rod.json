@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "forgineer:rod_casting_mold",
+    "forgineer:molten_gold"
+  ],
+  "result": {
+    "id": "forgineer:golden_rod"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:iron_ingot",
+    "forgineer:iron_rod",
+    "forgineer:iron_plate"
+  ]
+}

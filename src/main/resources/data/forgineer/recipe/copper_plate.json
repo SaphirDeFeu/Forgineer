@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "forgineer:plate_casting_mold",
+    "forgineer:molten_copper"
+  ],
+  "result": {
+    "id": "forgineer:copper_plate"
+  }
+}

@@ -26,6 +26,13 @@ public class ForgineerItems {
     public static final Item MOLTEN_GOLD = register("molten_gold", MoltenMetal::new, MoltenMetal.settings);
     public static final Item MOLTEN_COPPER = register("molten_copper", MoltenMetal::new, MoltenMetal.settings);
 
+    public static final Item IRON_ROD = register("iron_rod", Item::new, new Item.Settings());
+    public static final Item IRON_PLATE = register("iron_plate", Item::new, new Item.Settings());
+    public static final Item GOLDEN_ROD = register("golden_rod", Item::new, new Item.Settings());
+    public static final Item GOLDEN_PLATE = register("golden_plate", Item::new, new Item.Settings());
+    public static final Item COPPER_ROD = register("copper_rod", Item::new, new Item.Settings());
+    public static final Item COPPER_PLATE = register("copper_plate", Item::new, new Item.Settings());
+
     public static final Item UNCUT_RUBY = register("uncut_ruby", Item::new, new Item.Settings());
     public static final Item RUBY = register("ruby", Ruby::new, Ruby.settings);
     public static final Item RUBY_NETHERITE = register("ruby_netherite", RubyNetherite::new, RubyNetherite.settings);

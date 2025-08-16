@@ -8,7 +8,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 
-public class ModEffects {
+public class ForgineerEffects {
 
     public static final RegistryEntry<StatusEffect> HOT_HAND = Registry.registerReference(
             Registries.STATUS_EFFECT,

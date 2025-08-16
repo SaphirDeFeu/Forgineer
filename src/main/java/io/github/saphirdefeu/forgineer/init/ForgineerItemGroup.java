@@ -10,11 +10,11 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-public class ModItemGroup {
+public class ForgineerItemGroup {
 
     public static RegistryKey<ItemGroup> FORGINEER_ITEM_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(Forgineer.MOD_ID, "main_group"));
     public static final ItemGroup FORGINEER_ITEM_GROUP = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(ModItems.GRAPHITE_POWDER))
+            .icon(() -> new ItemStack(ForgineerItems.GRAPHITE_POWDER))
             .displayName(Text.translatable("itemGroup.forgineer"))
             .build();
 

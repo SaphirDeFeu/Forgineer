@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
 
-public class ModBlocks {
+public class ForgineerBlocks {
 
     public static final Block GRAPHITE = register(
             "graphite",
@@ -116,15 +116,15 @@ public class ModBlocks {
 
     public static void initialize() {
         ItemGroupEvents
-                .modifyEntriesEvent(ModItemGroup.FORGINEER_ITEM_GROUP_KEY)
+                .modifyEntriesEvent(ForgineerItemGroup.FORGINEER_ITEM_GROUP_KEY)
                 .register((itemGroup) -> {
-                    itemGroup.add(ModBlocks.GRAPHITE.asItem());
-                    itemGroup.add(ModBlocks.RUBY_ORE.asItem());
-                    itemGroup.add(ModBlocks.BLOODSTONE_ORE.asItem());
-                    itemGroup.add(ModBlocks.ONYX_ORE.asItem());
-                    itemGroup.add(ModBlocks.SAPPHIRE_ORE.asItem());
-                    itemGroup.add(ModBlocks.AQUAMARINE_ORE.asItem());
-                    itemGroup.add(ModBlocks.TOPAZ_ORE.asItem());
+                    itemGroup.add(ForgineerBlocks.GRAPHITE.asItem());
+                    itemGroup.add(ForgineerBlocks.RUBY_ORE.asItem());
+                    itemGroup.add(ForgineerBlocks.BLOODSTONE_ORE.asItem());
+                    itemGroup.add(ForgineerBlocks.ONYX_ORE.asItem());
+                    itemGroup.add(ForgineerBlocks.SAPPHIRE_ORE.asItem());
+                    itemGroup.add(ForgineerBlocks.AQUAMARINE_ORE.asItem());
+                    itemGroup.add(ForgineerBlocks.TOPAZ_ORE.asItem());
                 });
     }
 

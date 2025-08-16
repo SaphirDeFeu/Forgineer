@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
 
-public class ModItems {
+public class ForgineerItems {
 
     public static final Item GRAPHITE_POWDER = register("graphite_powder", Item::new, new Item.Settings());
 
@@ -59,7 +59,7 @@ public class ModItems {
 
     public static void initialize() {
         ItemGroupEvents
-                .modifyEntriesEvent(ModItemGroup.FORGINEER_ITEM_GROUP_KEY)
+                .modifyEntriesEvent(ForgineerItemGroup.FORGINEER_ITEM_GROUP_KEY)
                 .register(
                 (itemGroup) -> {
                     itemGroup.add(GRAPHITE_POWDER);

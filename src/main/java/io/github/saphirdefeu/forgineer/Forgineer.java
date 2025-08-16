@@ -10,20 +10,19 @@ public class Forgineer implements ModInitializer {
     public static final String MOD_ID = "forgineer";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-
     @Override
     public void onInitialize() {
 
         LOGGER.info("Initializing Forgineer");
 
-        ModItemGroup.initialize();
+        ForgineerItemGroup.initialize();
 
-        ModBlocks.initialize();
-        ModItems.initialize();
-        ModEffects.initialize();
-        ModWorldGen.initialize();
+        ForgineerBlocks.initialize();
+        ForgineerItems.initialize();
+        ForgineerEffects.initialize();
+        ForgineerWorldGen.initialize();
 
-        EventRegistrar.registerEvents();
+        ForgineerEventRegistrar.registerEvents();
 
         LOGGER.info("Forgineer initialized");
     }

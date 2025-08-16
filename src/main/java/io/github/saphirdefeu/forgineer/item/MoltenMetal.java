@@ -1,6 +1,6 @@
 package io.github.saphirdefeu.forgineer.item;
 
-import io.github.saphirdefeu.forgineer.init.ModEffects;
+import io.github.saphirdefeu.forgineer.init.ForgineerEffects;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -21,7 +21,7 @@ public class MoltenMetal extends Item {
     @Override
     public void inventoryTick(ItemStack stack, ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
         if(entity instanceof LivingEntity) {
-            var hot_hand_instance = new StatusEffectInstance(ModEffects.HOT_HAND, 2, 0, false, true, true);
+            var hot_hand_instance = new StatusEffectInstance(ForgineerEffects.HOT_HAND, 2, 0, false, true, true);
             ((LivingEntity) entity).addStatusEffect(hot_hand_instance);
         }
         super.inventoryTick(stack, world, entity, slot);

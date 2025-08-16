@@ -3,7 +3,7 @@
   "category": "misc",
   "group": "copper_ingot",
   "ingredients": [
-    "forgineer:casting_mold",
+    "forgineer:ingot_casting_mold",
     "forgineer:molten_copper"
   ],
   "result": {

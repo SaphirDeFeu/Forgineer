@@ -1,7 +1,7 @@
 {
   "item.forgineer.graphite_powder": "Graphite Powder",
   "item.forgineer.graphite": "Graphite",
-  "item.forgineer.casting_mold": "Casting Mold",
+  "item.forgineer.ingot_casting_mold": "Ingot Casting Mold",
   "item.forgineer.molten_iron": "Molten Iron",
   "item.forgineer.molten_gold": "Molten Gold",
   "item.forgineer.molten_copper": "Molten Copper",
@@ -42,6 +42,7 @@
   "effect.forgineer.hot_hand": "Hot Hand",
 
   "tag.item.forgineer.molten_metals": "Molten Metals",
+  "tag.item.forgineer.casting_molds": "Casting Molds",
   "tag.item.forgineer.uncut_gems": "Uncut Gemstones",
   "tag.item.forgineer.cut_gems": "Cut Gemstones",
   "tag.item.forgineer.netherite_gems": "Gemstone-Infused Netherite Ingots",

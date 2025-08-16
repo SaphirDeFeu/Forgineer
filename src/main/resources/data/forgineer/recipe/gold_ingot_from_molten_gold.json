@@ -3,7 +3,7 @@
   "category": "misc",
   "group": "gold_ingot",
   "ingredients": [
-    "forgineer:casting_mold",
+    "forgineer:ingot_casting_mold",
     "forgineer:molten_gold"
   ],
   "result": {

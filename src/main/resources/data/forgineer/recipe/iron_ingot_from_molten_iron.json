@@ -3,7 +3,7 @@
   "category": "misc",
   "group": "iron_ingot",
   "ingredients": [
-    "forgineer:casting_mold",
+    "forgineer:ingot_casting_mold",
     "forgineer:molten_iron"
   ],
   "result": {

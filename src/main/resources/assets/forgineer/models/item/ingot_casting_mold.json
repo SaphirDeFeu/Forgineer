@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "forgineer:item/casting_mold"
+    "layer0": "forgineer:item/ingot_casting_mold"
   }
 }

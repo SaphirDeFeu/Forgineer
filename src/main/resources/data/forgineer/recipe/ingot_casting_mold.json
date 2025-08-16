@@ -3,6 +3,7 @@
   "category": "equipment",
   "group": "casting_mold",
   "pattern": [
+    "eee",
     "e e",
     "eee"
   ],
@@ -10,6 +11,6 @@
     "e": "forgineer:graphite_powder"
   },
   "result": {
-    "id": "forgineer:casting_mold"
+    "id": "forgineer:ingot_casting_mold"
   }
 }

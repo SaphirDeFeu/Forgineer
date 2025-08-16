@@ -16,7 +16,7 @@ public class ModItems {
 
     public static final Item GRAPHITE_POWDER = register("graphite_powder", Item::new, new Item.Settings());
 
-    public static final Item CASTING_MOLD = register("casting_mold", CastingMold::new, CastingMold.settings);
+    public static final Item INGOT_CASTING_MOLD = register("ingot_casting_mold", CastingMold::new, CastingMold.settings);
 
     public static final Item MOLTEN_IRON = register("molten_iron", MoltenMetal::new, MoltenMetal.settings);
     public static final Item MOLTEN_GOLD = register("molten_gold", MoltenMetal::new, MoltenMetal.settings);
@@ -63,7 +63,7 @@ public class ModItems {
                 .register(
                 (itemGroup) -> {
                     itemGroup.add(GRAPHITE_POWDER);
-                    itemGroup.add(CASTING_MOLD);
+                    itemGroup.add(INGOT_CASTING_MOLD);
 
                     itemGroup.add(MOLTEN_IRON);
                     itemGroup.add(MOLTEN_GOLD);

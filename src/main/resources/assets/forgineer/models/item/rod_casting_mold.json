@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "forgineer:item/bar_casting_mold"
+    "layer0": "forgineer:item/rod_casting_mold"
   }
 }

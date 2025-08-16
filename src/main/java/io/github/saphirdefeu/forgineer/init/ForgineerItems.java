@@ -20,7 +20,7 @@ public class ForgineerItems {
 
     public static final Item INGOT_CASTING_MOLD = register("ingot_casting_mold", CastingMold::new, CastingMold.settings);
     public static final Item PLATE_CASTING_MOLD = register("plate_casting_mold", CastingMold::new, CastingMold.settings);
-    public static final Item BAR_CASTING_MOLD = register("bar_casting_mold", CastingMold::new, CastingMold.settings);
+    public static final Item ROD_CASTING_MOLD = register("rod_casting_mold", CastingMold::new, CastingMold.settings);
 
     public static final Item MOLTEN_IRON = register("molten_iron", MoltenMetal::new, MoltenMetal.settings);
     public static final Item MOLTEN_GOLD = register("molten_gold", MoltenMetal::new, MoltenMetal.settings);
@@ -69,7 +69,7 @@ public class ForgineerItems {
                     itemGroup.add(GRAPHITE_POWDER);
                     itemGroup.add(INGOT_CASTING_MOLD);
                     itemGroup.add(PLATE_CASTING_MOLD);
-                    itemGroup.add(BAR_CASTING_MOLD);
+                    itemGroup.add(ROD_CASTING_MOLD);
 
                     itemGroup.add(MOLTEN_IRON);
                     itemGroup.add(MOLTEN_GOLD);

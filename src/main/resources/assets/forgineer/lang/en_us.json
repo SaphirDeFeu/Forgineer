@@ -60,6 +60,9 @@
   "tag.item.forgineer.sapphires": "Sapphires",
   "tag.item.forgineer.aquamarines": "Aquamarines",
   "tag.item.forgineer.topazes": "Topazes",
+  "tag.item.forgineer.can_be_smelt_into.molten_iron": "Can be smelt into Molten Iron",
+  "tag.item.forgineer.can_be_smelt_into.molten_gold": "Can be smelt into Molten Gold",
+  "tag.item.forgineer.can_be_smelt_into.molten_copper": "Can be smelt into Molten Copper",
 
   "forgineer.text.consume_gemstone_success": "The %1$s seems to bring you additional powers...",
   "forgineer.text.consume_gemstone_fail": "You have nothing to gain from this...",

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "#forgineer:can_be_smelt_into/molten_gold",
+  "result": {
+    "id": "forgineer:molten_gold"
+  },
+  "experience": 0,
+  "cookingtime": 200
+}

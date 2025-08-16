@@ -10,6 +10,8 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.function.Function;
 
 public class ForgineerItems {
@@ -17,6 +19,8 @@ public class ForgineerItems {
     public static final Item GRAPHITE_POWDER = register("graphite_powder", Item::new, new Item.Settings());
 
     public static final Item INGOT_CASTING_MOLD = register("ingot_casting_mold", CastingMold::new, CastingMold.settings);
+    public static final Item PLATE_CASTING_MOLD = register("plate_casting_mold", CastingMold::new, CastingMold.settings);
+    public static final Item BAR_CASTING_MOLD = register("bar_casting_mold", CastingMold::new, CastingMold.settings);
 
     public static final Item MOLTEN_IRON = register("molten_iron", MoltenMetal::new, MoltenMetal.settings);
     public static final Item MOLTEN_GOLD = register("molten_gold", MoltenMetal::new, MoltenMetal.settings);
@@ -48,7 +52,7 @@ public class ForgineerItems {
 
     public static final Item GEMSTONE_DETECTOR = register("gemstone_detector", GemstoneDetector::new, GemstoneDetector.settings);
 
-    private static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
+    private static Item register(String name, @NotNull Function<Item.Settings, Item> itemFactory, Item.@NotNull Settings settings) {
         // Create item key, item instance, and register the item instance.
         RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, name));
         Item item = itemFactory.apply(settings.registryKey(itemKey));
@@ -64,6 +68,8 @@ public class ForgineerItems {
                 (itemGroup) -> {
                     itemGroup.add(GRAPHITE_POWDER);
                     itemGroup.add(INGOT_CASTING_MOLD);
+                    itemGroup.add(PLATE_CASTING_MOLD);
+                    itemGroup.add(BAR_CASTING_MOLD);
 
                     itemGroup.add(MOLTEN_IRON);
                     itemGroup.add(MOLTEN_GOLD);

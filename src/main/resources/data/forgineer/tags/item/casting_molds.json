@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "forgineer:ingot_casting_mold"
+    "forgineer:ingot_casting_mold",
+    "forgineer:plate_casting_mold",
+    "forgineer:bar_casting_mold"
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "casting_mold",
+  "pattern": [
+    "eee",
+    "   ",
+    "eee"
+  ],
+  "key": {
+    "e": "forgineer:graphite_powder"
+  },
+  "result": {
+    "id": "forgineer:plate_casting_mold"
+  }
+}

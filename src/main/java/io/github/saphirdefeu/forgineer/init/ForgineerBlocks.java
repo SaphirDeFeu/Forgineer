@@ -13,6 +13,8 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.function.Function;
 
 public class ForgineerBlocks {
@@ -88,9 +90,10 @@ public class ForgineerBlocks {
 
     private static Block register(
             String name,
-            Function<AbstractBlock.Settings, Block> blockFactory,
-            AbstractBlock.Settings settings,
-            boolean shouldRegisterItem) {
+            @NotNull Function<AbstractBlock.Settings, Block> blockFactory,
+            AbstractBlock.@NotNull Settings settings,
+            boolean shouldRegisterItem
+    ) {
         // Register block key and block instance
         RegistryKey<Block> blockKey = keyOfBlock(name);
         Block block = blockFactory.apply(settings.registryKey(blockKey));

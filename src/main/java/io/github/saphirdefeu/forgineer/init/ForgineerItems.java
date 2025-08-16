@@ -82,6 +82,14 @@ public class ForgineerItems {
                     itemGroup.add(MOLTEN_GOLD);
                     itemGroup.add(MOLTEN_COPPER);
 
+                    itemGroup.add(IRON_ROD);
+                    itemGroup.add(GOLDEN_ROD);
+                    itemGroup.add(COPPER_ROD);
+
+                    itemGroup.add(IRON_PLATE);
+                    itemGroup.add(GOLDEN_PLATE);
+                    itemGroup.add(COPPER_PLATE);
+
                     itemGroup.add(UNCUT_RUBY);
                     itemGroup.add(RUBY);
                     itemGroup.add(RUBY_NETHERITE);

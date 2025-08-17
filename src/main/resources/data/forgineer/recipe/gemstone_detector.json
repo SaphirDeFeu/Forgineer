@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "molten_iron",
+  "category": "equipment",
+  "pattern": [
+    "bLI",
+    "gIC",
+    "GGG"
+  ],
+  "key": {
+    "L": "minecraft:leather",
+    "I": "forgineer:iron_rod",
+    "g": "forgineer:graphite_powder",
+    "G": "forgineer:golden_plate",
+    "C": "forgineer:copper_rod",
+    "b": "#minecraft:stone_buttons"
+  },
+  "result": {
+    "id": "forgineer:gemstone_detector"
+  }
+}

@@ -58,6 +58,7 @@ public class ForgineerItems {
     public static final Item TOPAZ_NETHERITE = register("topaz_netherite", TopazNetherite::new, TopazNetherite.settings);
 
     public static final Item GEMSTONE_DETECTOR = register("gemstone_detector", GemstoneDetector::new, GemstoneDetector.settings);
+    public static final Item DRILL = register("drill", Drill::new, Drill.settings);
 
     private static Item register(String name, @NotNull Function<Item.Settings, Item> itemFactory, Item.@NotNull Settings settings) {
         // Create item key, item instance, and register the item instance.

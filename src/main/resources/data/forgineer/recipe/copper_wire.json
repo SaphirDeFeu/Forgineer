@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "ccc",
+    "cSc",
+    "ccc"
+  ],
+  "key": {
+    "c": "forgineer:copper_rod",
+    "S": "forgineer:spool"
+  },
+  "result": {
+    "id": "forgineer:copper_wire"
+  }
+}

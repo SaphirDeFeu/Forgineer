@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "---",
+    " | ",
+    "---"
+  ],
+  "key": {
+    "-": "#minecraft:wooden_slabs",
+    "|": "#minecraft:wooden_fences"
+  },
+  "result": {
+    "id": "forgineer:spool"
+  }
+}

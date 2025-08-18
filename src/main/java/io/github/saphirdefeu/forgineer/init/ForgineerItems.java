@@ -16,6 +16,7 @@ import java.util.function.Function;
 
 public class ForgineerItems {
 
+    public static final Item SPOOL = register("spool", Item::new, new Item.Settings());
     public static final Item GRAPHITE_POWDER = register("graphite_powder", Item::new, new Item.Settings());
 
     public static final Item INGOT_CASTING_MOLD = register("ingot_casting_mold", CastingMold::new, CastingMold.settings);
@@ -32,6 +33,8 @@ public class ForgineerItems {
     public static final Item GOLDEN_PLATE = register("golden_plate", Item::new, new Item.Settings());
     public static final Item COPPER_ROD = register("copper_rod", Item::new, new Item.Settings());
     public static final Item COPPER_PLATE = register("copper_plate", Item::new, new Item.Settings());
+
+    public static final Item COPPER_WIRE = register("copper_wire", Item::new, new Item.Settings());
 
     public static final Item UNCUT_RUBY = register("uncut_ruby", Item::new, new Item.Settings());
     public static final Item RUBY = register("ruby", Ruby::new, Ruby.settings);
@@ -74,6 +77,7 @@ public class ForgineerItems {
                 .modifyEntriesEvent(ForgineerItemGroup.FORGINEER_ITEM_GROUP_KEY)
                 .register(
                 (itemGroup) -> {
+                    itemGroup.add(SPOOL);
                     itemGroup.add(GRAPHITE_POWDER);
                     itemGroup.add(INGOT_CASTING_MOLD);
                     itemGroup.add(PLATE_CASTING_MOLD);
@@ -90,6 +94,8 @@ public class ForgineerItems {
                     itemGroup.add(IRON_PLATE);
                     itemGroup.add(GOLDEN_PLATE);
                     itemGroup.add(COPPER_PLATE);
+
+                    itemGroup.add(COPPER_WIRE);
 
                     itemGroup.add(UNCUT_RUBY);
                     itemGroup.add(RUBY);

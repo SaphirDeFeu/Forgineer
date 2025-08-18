@@ -1,4 +1,5 @@
 {
+  "item.forgineer.spool": "Spool",
   "item.forgineer.graphite_powder": "Graphite Powder",
   "item.forgineer.graphite": "Graphite",
   "item.forgineer.ingot_casting_mold": "Ingot Casting Mold",
@@ -13,6 +14,7 @@
   "item.forgineer.golden_plate": "Golden Plate",
   "item.forgineer.copper_rod": "Copper Rod",
   "item.forgineer.copper_plate": "Copper Plate",
+  "item.forgineer.copper_wire": "Copper Wire",
   "item.forgineer.ruby_ore": "Ruby Ore",
   "item.forgineer.uncut_ruby": "Uncut Ruby",
   "item.forgineer.ruby": "Cut Ruby",

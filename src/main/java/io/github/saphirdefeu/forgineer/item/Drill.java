@@ -1,6 +1,5 @@
 package io.github.saphirdefeu.forgineer.item;
 
-import io.github.saphirdefeu.forgineer.Forgineer;
 import io.github.saphirdefeu.forgineer.init.ForgineerToolMaterials;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -34,8 +33,6 @@ public class Drill extends Item {
         ItemStack itemStack = playerEntity.getStackInHand(hand);
         int maxDamage = itemStack.getMaxDamage();
         int damage = itemStack.getDamage();
-
-        Forgineer.LOGGER.info("Drill has {} fuel remaining", maxDamage - damage);
 
         if(maxDamage - damage < 2) return ActionResult.FAIL;
 

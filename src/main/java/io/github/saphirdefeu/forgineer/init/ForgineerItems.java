@@ -116,6 +116,7 @@ public class ForgineerItems {
                     itemGroup.add(TOPAZ_NETHERITE);
 
                     itemGroup.add(GEMSTONE_DETECTOR);
+                    itemGroup.add(DRILL);
                 }
         );
     }

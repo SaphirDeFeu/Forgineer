@@ -38,6 +38,7 @@
   "item.forgineer.topaz": "Cut Topaz",
   "item.forgineer.topaz_netherite": "Topaz-Infused Netherite Ingot",
   "item.forgineer.gemstone_detector": "Gemstone Detector",
+  "item.forgineer.drill": "Drill",
 
   "block.forgineer.graphite": "Graphite",
   "block.forgineer.ruby_ore": "Ruby Ore",
@@ -63,6 +64,7 @@
   "tag.item.forgineer.can_be_smelt_into.molten_iron": "Can be smelt into Molten Iron",
   "tag.item.forgineer.can_be_smelt_into.molten_gold": "Can be smelt into Molten Gold",
   "tag.item.forgineer.can_be_smelt_into.molten_copper": "Can be smelt into Molten Copper",
+  "tag.item.forgineer.drill_tool_materials": "Drill Materials",
 
   "forgineer.text.consume_gemstone_success": "The %1$s seems to bring you additional powers...",
   "forgineer.text.consume_gemstone_fail": "You have nothing to gain from this...",

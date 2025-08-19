@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "eee",
+    "eBe",
+    "eee"
+  ],
+  "key": {
+    "e": "#forgineer:plant_matter",
+    "B": "minecraft:barrel"
+  },
+  "result": {
+    "id": "forgineer:biofuel"
+  }
+}

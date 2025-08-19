@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "pNN",
+    "Rro",
+    "pNN"
+  ],
+  "key": {
+    "p": "forgineer:iron_plate",
+    "R": "forgineer:iron_rod",
+    "N": "minecraft:netherite_ingot",
+    "r": "minecraft:redstone_block",
+    "o": "forgineer:copper_plate"
+  },
+  "result": {
+    "id": "forgineer:drill_motor"
+  }
+}

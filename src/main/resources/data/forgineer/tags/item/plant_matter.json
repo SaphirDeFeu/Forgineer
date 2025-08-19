@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:apple",
+    "minecraft:bamboo",
+    "minecraft:wheat_seeds",
+    "minecraft:melon_seeds",
+    "minecraft:potato",
+    "minecraft:poisonous_potato",
+    "minecraft:azalea",
+    "minecraft:flowering_azalea",
+    "minecraft:cactus"
+  ]
+}

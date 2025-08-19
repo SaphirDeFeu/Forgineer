@@ -21,6 +21,7 @@ public final class ForgineerTags {
         public static final TagKey<Item> NETHERITE_GEMS = TagKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, "netherite_gems"));
         public static final TagKey<Item> MOLTEN_METALS = TagKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, "molten_metals"));
         public static final TagKey<Item> CASTING_MOLDS = TagKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, "casting_molds"));
+        public static final TagKey<Item> PLANT_MATTER = TagKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, "plant_matter"));
 
         public static final class CanBeSmeltInto {
             public static final TagKey<Item> MOLTEN_COPPER = TagKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, "can_be_smelt_into/molten_copper"));

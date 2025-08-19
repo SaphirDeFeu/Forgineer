@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "ii ",
+    "ind",
+    " ft"
+  ],
+  "key": {
+    "i": "minecraft:iron_ingot",
+    "f": "forgineer:fuel_canister",
+    "n": "minecraft:netherite_block",
+    "d": "forgineer:drill_motor",
+    "t": "#minecraft:terracotta"
+  },
+  "result": {
+    "id": "forgineer:drill"
+  }
+}

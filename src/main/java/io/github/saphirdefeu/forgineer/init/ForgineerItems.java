@@ -36,6 +36,10 @@ public class ForgineerItems {
 
     public static final Item COPPER_WIRE = register("copper_wire", Item::new, new Item.Settings());
 
+    public static final Item FUEL_CANISTER = register("fuel_canister", Item::new, new Item.Settings());
+    public static final Item DRILL_MOTOR = register("drill_motor", Item::new, new Item.Settings());
+    public static final Item BIOFUEL = register("biofuel", Item::new, new Item.Settings());
+
     public static final Item UNCUT_RUBY = register("uncut_ruby", Item::new, new Item.Settings());
     public static final Item RUBY = register("ruby", Ruby::new, Ruby.settings);
     public static final Item RUBY_NETHERITE = register("ruby_netherite", RubyNetherite::new, RubyNetherite.settings);
@@ -96,6 +100,10 @@ public class ForgineerItems {
                     itemGroup.add(COPPER_PLATE);
 
                     itemGroup.add(COPPER_WIRE);
+
+                    itemGroup.add(FUEL_CANISTER);
+                    itemGroup.add(DRILL_MOTOR);
+                    itemGroup.add(BIOFUEL);
 
                     itemGroup.add(UNCUT_RUBY);
                     itemGroup.add(RUBY);

@@ -15,6 +15,9 @@
   "item.forgineer.copper_rod": "Copper Rod",
   "item.forgineer.copper_plate": "Copper Plate",
   "item.forgineer.copper_wire": "Copper Wire",
+  "item.forgineer.fuel_canister": "Fuel Canister",
+  "item.forgineer.drill_motor": "Drill Motor",
+  "item.forgineer.biofuel": "Biofuel",
   "item.forgineer.ruby_ore": "Ruby Ore",
   "item.forgineer.uncut_ruby": "Uncut Ruby",
   "item.forgineer.ruby": "Cut Ruby",
@@ -67,6 +70,7 @@
   "tag.item.forgineer.can_be_smelt_into.molten_gold": "Can be smelt into Molten Gold",
   "tag.item.forgineer.can_be_smelt_into.molten_copper": "Can be smelt into Molten Copper",
   "tag.item.forgineer.drill_tool_materials": "Drill Materials",
+  "tag.item.forgineer.plant_matter": "Plant Matter",
 
   "forgineer.text.consume_gemstone_success": "The %1$s seems to bring you additional powers...",
   "forgineer.text.consume_gemstone_fail": "You have nothing to gain from this...",

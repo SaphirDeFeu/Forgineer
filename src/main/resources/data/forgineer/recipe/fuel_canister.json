@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "bpb",
+    "bFb",
+    "bpb"
+  ],
+  "key": {
+    "b": "minecraft:iron_block",
+    "p": "forgineer:iron_plate",
+    "F": "forgineer:biofuel"
+  },
+  "result": {
+    "id": "forgineer:fuel_canister"
+  }
+}

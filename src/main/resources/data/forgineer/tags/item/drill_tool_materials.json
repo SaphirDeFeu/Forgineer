@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "forgineer:iron_rod",
-    "forgineer:iron_plate",
-    "minecraft:iron_ingot"
+    "forgineer:biofuel"
   ]
 }

@@ -12,6 +12,7 @@ Move deep inside the earth to uncover hidden treasures and ores to upgrade your 
 
 - A slightly different early game of burning molten metal.
 - Biome-specific gemstones capable of enhancing your character.
+- Resources allowing you to craft new mining tools to make the expeditions down in the mines faster
 
 ## ❤️Contributing
 

@@ -5,7 +5,10 @@
   "name": "Forgineer",
   "description": "We yearn for the mines.",
   "authors": [ "SaphirDeFeu" ],
-  "contact": {},
+  "contact": {
+    "sources": "https://github.com/SaphirDeFeu/Forgineer",
+    "issues": "https://github.com/SaphirDeFeu/Forgineer/issues"
+  },
   "license": "MIT",
   "icon": "assets/forgineer/icon.png",
   "environment": "*",

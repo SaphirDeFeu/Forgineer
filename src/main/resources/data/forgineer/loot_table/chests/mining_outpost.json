@@ -14,19 +14,50 @@
             {
               "type": "minecraft:item",
               "name": "minecraft:raw_iron",
-              "weight": 10
+              "weight": 10,
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 1,
+                    "max": 11
+                  }
+                }
+              ]
             },
             {
               "type": "minecraft:item",
               "name": "minecraft:raw_gold",
-              "weight": 3
+              "weight": 3,
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 1,
+                    "max": 6
+                  }
+                }
+              ]
             },
             {
               "type": "minecraft:item",
               "name": "minecraft:raw_copper",
-              "weight": 12
+              "weight": 12,
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 8,
+                    "max": 24
+                  }
+                }
+              ]
             }
-          ]
+          ],
+          "functions": []
         }
       ]
     },
@@ -39,13 +70,33 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "forgineer:potato",
-          "weight": 1
+          "name": "minecraft:potato",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 4,
+                "max": 23
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
           "name": "forgineer:biofuel",
-          "weight": 10
+          "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:binomial",
+                "n": 8,
+                "p": 0.1
+              }
+            }
+          ]
         }
       ]
     },

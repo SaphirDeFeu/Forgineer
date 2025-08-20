@@ -66,7 +66,7 @@ public class OnyxNetherite extends Item {
 
         user.sendMessage(
                 Text.translatable("forgineer.text.consume_gemstone_success", user.getStackInHand(hand).getName())
-                        .formatted(Formatting.DARK_GREEN),
+                        .formatted(Formatting.BLACK),
                 false
         );
 

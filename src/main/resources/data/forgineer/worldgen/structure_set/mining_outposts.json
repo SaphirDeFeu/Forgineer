@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "forgineer:mining_outpost",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 6,
+    "separation": 2,
+    "spread_type": "linear",
+    "salt": 1646207470
+  }
+}

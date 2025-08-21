@@ -1,7 +1,15 @@
 {
   "structures": [
     {
-      "structure": "forgineer:mining_outpost",
+      "structure": "forgineer:mining_outpost_temperate",
+      "weight": 1
+    },
+    {
+      "structure": "forgineer:mining_outpost_snowy",
+      "weight": 1
+    },
+    {
+      "structure": "forgineer:mining_outpost_nether",
       "weight": 1
     }
   ],

@@ -1,10 +1,10 @@
 {
   "type": "minecraft:jigsaw",
-  "biomes": "#minecraft:has_structure/mineshaft",
+  "biomes": "#c:is_temperate/overworld",
   "step": "underground_structures",
   "terrain_adaptation": "bury",
   "spawn_overrides": {},
-  "start_pool": "forgineer:mining_outpost",
+  "start_pool": "forgineer:mining_outpost_temperate",
   "size": 1,
   "start_height": {
     "type": "minecraft:biased_to_bottom",

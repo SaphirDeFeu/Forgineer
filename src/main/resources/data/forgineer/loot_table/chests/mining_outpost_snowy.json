@@ -4,8 +4,8 @@
     {
       "rolls": {
         "type": "minecraft:uniform",
-        "min": 5,
-        "max": 2
+        "min": 2,
+        "max": 5
       },
       "entries": [
         {
@@ -103,8 +103,8 @@
     {
       "rolls": {
         "type": "minecraft:binomial",
-        "n": 3,
-        "p": 0.4
+        "n": 2,
+        "p": 0.3
       },
       "entries": [
         {
@@ -136,6 +136,26 @@
               "weight": 8
             }
           ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:binomial",
+        "n": 1,
+        "p": 0.1
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "forgineer:uncut_sapphire",
+          "weight": 9
+        },
+        {
+          "type": "minecraft:item",
+          "name": "forgineer:sapphire",
+          "weight": 1,
+          "functions": []
         }
       ]
     }

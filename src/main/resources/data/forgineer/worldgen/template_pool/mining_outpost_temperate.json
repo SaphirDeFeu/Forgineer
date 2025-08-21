@@ -6,7 +6,7 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "projection": "rigid",
-        "location": "forgineer:mining_outpost",
+        "location": "forgineer:mining_outpost_temperate",
         "processors": "minecraft:empty"
       }
     }

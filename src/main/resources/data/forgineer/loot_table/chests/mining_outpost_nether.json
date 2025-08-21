@@ -1,0 +1,174 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 5
+      },
+      "entries": [
+        {
+          "type": "minecraft:group",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:gold_nugget",
+              "weight": 10,
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 4,
+                    "max": 21
+                  }
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:quartz",
+              "weight": 8,
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "min": 2,
+                    "max": 6
+                  }
+                }
+              ]
+            }
+          ],
+          "functions": []
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:binomial",
+        "n": 2,
+        "p": 0.2
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:porkchop",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 4,
+                "max": 23
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "forgineer:biofuel",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:binomial",
+                "n": 8,
+                "p": 0.1
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherite_scrap",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:binomial",
+                "n": 4,
+                "p": 0.2
+              },
+              "add": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:binomial",
+        "n": 2,
+        "p": 0.3
+      },
+      "entries": [
+        {
+          "type": "minecraft:group",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:diamond_pickaxe",
+              "weight": 2,
+              "functions": [
+                {
+                  "function": "minecraft:set_enchantments",
+                  "enchantments": {
+                    "minecraft:fortune": {
+                      "type": "minecraft:uniform",
+                      "min": 0,
+                      "max": 2
+                    }
+                  }
+                },
+                {
+                  "function": "minecraft:set_enchantments",
+                  "enchantments": {
+                    "minecraft:efficiency": {
+                      "type": "minecraft:uniform",
+                      "min": 1,
+                      "max": 3
+                    }
+                  },
+                  "add": false,
+                  "conditions": []
+                }
+              ],
+              "conditions": []
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:diamond_pickaxe",
+              "weight": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:binomial",
+        "n": 1,
+        "p": 0.15
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "forgineer:uncut_topaz",
+          "weight": 9
+        },
+        {
+          "type": "minecraft:item",
+          "name": "forgineer:topaz",
+          "weight": 1,
+          "functions": []
+        }
+      ]
+    }
+  ]
+}

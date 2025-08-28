@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 public class TopazNetherite extends Item {
 
     private static final EntityAttributeModifier entityAttributeModifier = new EntityAttributeModifier(
-            Identifier.of(Forgineer.MOD_ID, "gemstone"), 2.0, EntityAttributeModifier.Operation.ADD_VALUE
+            Identifier.of(Forgineer.MOD_ID, "gemstone"), 1.0, EntityAttributeModifier.Operation.ADD_VALUE
     );
 
     public static final Settings settings = new Settings()

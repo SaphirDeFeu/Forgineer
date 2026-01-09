@@ -53,7 +53,7 @@ public class SapphireNetherite extends Item {
                     false
             );
 
-            user.playSoundToPlayer(SoundEvents.BLOCK_ANVIL_FALL, SoundCategory.PLAYERS, 10f, 1f);
+            world.playSound(null, user.getBlockX(), user.getBlockY(), user.getBlockZ(), SoundEvents.BLOCK_ANVIL_FALL, SoundCategory.PLAYERS, 10f, 1f, 0L);
 
             return ActionResult.FAIL;
         }
@@ -70,7 +70,7 @@ public class SapphireNetherite extends Item {
                 false
         );
 
-        user.playSoundToPlayer(SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.PLAYERS, 10f, 1f);
+        world.playSound(null, user.getBlockX(), user.getBlockY(), user.getBlockZ(), SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.PLAYERS, 10f, 1f, 0L);
 
         user.getStackInHand(hand).decrement(1);
 

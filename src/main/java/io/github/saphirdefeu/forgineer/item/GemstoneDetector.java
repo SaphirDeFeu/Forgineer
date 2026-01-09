@@ -49,7 +49,7 @@ public class GemstoneDetector extends Item {
             return ActionResult.PASS;
         }
 
-        Vec3d exactPosition = user.getPos();
+        Vec3d exactPosition = new Vec3d(user.getX(), user.getY(), user.getZ()); // avoids Mojang's renaming of getPos() to getEntityPos()
         double minDist = RADIUS + 10;
         BlockPos minDistBlockPos = new BlockPos(0, 0, 0);
         for(BlockPos blockPos : ores) {

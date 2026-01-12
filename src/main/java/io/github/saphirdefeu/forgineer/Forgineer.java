@@ -21,7 +21,6 @@ public class Forgineer implements ModInitializer {
         ForgineerItems.initialize();
         ForgineerEffects.initialize();
         ForgineerWorldGen.initialize();
-        ForgineerEnchantments.initialize();
 
         ForgineerEventRegistrar.registerEvents();
 

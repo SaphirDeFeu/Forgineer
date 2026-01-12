@@ -8,67 +8,6 @@
           "type": "minecraft:alternatives",
           "children": [
             {
-              "type": "minecraft:group",
-              "children": [
-                {
-                  "type": "minecraft:item",
-                  "name": "forgineer:ruby",
-                  "conditions": [],
-                  "functions": [
-                    {
-                      "function": "minecraft:apply_bonus",
-                      "enchantment": "forgineer:pristine",
-                      "formula": "minecraft:uniform_bonus_count",
-                      "parameters": {
-                        "bonusMultiplier": 0.2
-                      }
-                    }
-                  ]
-                },
-                {
-                  "type": "minecraft:item",
-                  "name": "forgineer:uncut_ruby",
-                  "conditions": [],
-                  "functions": [
-                    {
-                      "function": "minecraft:set_count",
-                      "count": {
-                        "type": "minecraft:uniform",
-                        "min": 1,
-                        "max": 2
-                      },
-                      "conditions": []
-                    },
-                    {
-                      "function": "minecraft:apply_bonus",
-                      "enchantment": "forgineer:pristine",
-                      "formula": "minecraft:uniform_bonus_count",
-                      "parameters": {
-                        "bonusMultiplier": 1
-                      }
-                    }
-                  ]
-                }
-              ],
-              "conditions": [
-                {
-                  "condition": "minecraft:match_tool",
-                  "predicate": {
-                    "predicates": {
-                      "minecraft:enchantments": [
-                        {
-                          "enchantments": "forgineer:pristine",
-                          "levels": {
-                            "min": 1
-                          }
-                        }
-                      ]
-                    }
-                  }
-                }
-              ]
-            },
-            {
               "type": "minecraft:item",
               "conditions": [
                 {

@@ -71,9 +71,6 @@
   "tag.item.forgineer.can_be_smelt_into.molten_copper": "Can be smelt into Molten Copper",
   "tag.item.forgineer.drill_tool_materials": "Drill Materials",
   "tag.item.forgineer.plant_matter": "Plant Matter",
-  "tag.item.forgineer.enchantable.pristine": "Items enchantable with Pristine",
-
-  "enchantment.forgineer.pristine": "Pristine",
 
   "forgineer.text.consume_gemstone_success": "The %1$s seems to bring you additional powers...",
   "forgineer.text.consume_gemstone_fail": "You have nothing to gain from this...",

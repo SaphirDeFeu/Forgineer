@@ -71,9 +71,6 @@
   "tag.item.forgineer.can_be_smelt_into.molten_copper": "Peut être fondu en du cuivre fondu",
   "tag.item.forgineer.drill_tool_materials": "Matériaux pour perceuse",
   "tag.item.forgineer.plant_matter": "Matière végétale",
-  "tag.item.forgineer.enchantable.pristine": "Objets enchantables avec Pristine",
-
-  "enchantment.forgineer.pristine": "Pristine",
 
   "forgineer.text.consume_gemstone_success": "Le %1$s semble vous apporter des pouvoirs supplémentaires...",
   "forgineer.text.consume_gemstone_fail": "Vous n'avez rien à gagner grâce à cela...",

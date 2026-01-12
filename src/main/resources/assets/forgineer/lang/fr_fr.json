@@ -72,8 +72,10 @@
   "tag.item.forgineer.drill_tool_materials": "Matériaux pour perceuse",
   "tag.item.forgineer.plant_matter": "Matière végétale",
   "tag.item.forgineer.enchantable.pristine": "Objets enchantables avec Pristine",
+  "tag.item.forgineer.enchantable.gemfinder": "Objets enchantables avec Chercheur de gemmes",
 
   "enchantment.forgineer.pristine": "Pristine",
+  "enchantment.forgineer.gemfinder": "Chercheur de gemmes",
 
   "forgineer.text.consume_gemstone_success": "Le %1$s semble vous apporter des pouvoirs supplémentaires...",
   "forgineer.text.consume_gemstone_fail": "Vous n'avez rien à gagner grâce à cela...",

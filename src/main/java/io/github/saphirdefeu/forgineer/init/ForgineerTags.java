@@ -34,6 +34,7 @@ public final class ForgineerTags {
 
         public static final class Enchantable {
             public static final TagKey<Item> PRISTINE_ENCHANTABLE = TagKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, "enchantable/pristine"));
+            public static final TagKey<Item> GEMFINDER_ENCHANTABLE = TagKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, "enchantable/gemfinder"));
         }
     }
 

@@ -8,6 +8,7 @@ import net.minecraft.util.Identifier;
 
 public class ForgineerEnchantments {
     public static final RegistryKey<Enchantment> PRISTINE = of("pristine");
+    public static final RegistryKey<Enchantment> GEMFINDER = of("gemfinder");
 
     /**
      * Returns an enchantment's registry key

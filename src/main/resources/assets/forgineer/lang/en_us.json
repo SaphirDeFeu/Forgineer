@@ -72,8 +72,10 @@
   "tag.item.forgineer.drill_tool_materials": "Drill Materials",
   "tag.item.forgineer.plant_matter": "Plant Matter",
   "tag.item.forgineer.enchantable.pristine": "Items enchantable with Pristine",
+  "tag.item.forgineer.enchantable.gemfinder": "Items enchantable with Gemfinder",
 
   "enchantment.forgineer.pristine": "Pristine",
+  "enchantment.forgineer.gemfinder": "Gemfinder",
 
   "forgineer.text.consume_gemstone_success": "The %1$s seems to bring you additional powers...",
   "forgineer.text.consume_gemstone_fail": "You have nothing to gain from this...",

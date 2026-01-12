@@ -67,6 +67,13 @@ public class ForgineerItems {
     public static final Item GEMSTONE_DETECTOR = register("gemstone_detector", GemstoneDetector::new, GemstoneDetector.settings);
     public static final Item DRILL = register("drill", Drill::new, Drill.settings);
 
+    /**
+     * Registers an item to the Minecraft registry
+     * @param name identifier of the item without mod id
+     * @param itemFactory a method that creates the item
+     * @param settings item settings
+     * @return an instance of {@link Item}
+     */
     private static Item register(String name, @NotNull Function<Item.Settings, Item> itemFactory, Item.@NotNull Settings settings) {
         // Create item key, item instance, and register the item instance.
         RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, name));

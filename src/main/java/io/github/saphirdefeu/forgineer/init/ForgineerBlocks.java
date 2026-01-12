@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Function;
 
-public class ForgineerBlocks {
+public final class ForgineerBlocks {
 
     public static final Block GRAPHITE = register(
             "graphite",
@@ -88,6 +88,14 @@ public class ForgineerBlocks {
             true
     );
 
+    /**
+     * Registers a block to the Minecraft registry
+     * @param name identifier of the block without mod id
+     * @param blockFactory a method that creates the block
+     * @param settings block settings
+     * @param shouldRegisterItem whether the block should also register as an item so that the player can hold it
+     * @return an instance of {@link Block}
+     */
     private static Block register(
             String name,
             @NotNull Function<AbstractBlock.Settings, Block> blockFactory,
@@ -109,10 +117,20 @@ public class ForgineerBlocks {
         return Registry.register(Registries.BLOCK, blockKey, block);
     }
 
+    /**
+     * Returns the registry key of any given block
+     * @param name identifier of the block without mod id
+     * @return Block registry key
+     */
     private static RegistryKey<Block> keyOfBlock(String name) {
         return RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Forgineer.MOD_ID, name));
     }
 
+    /**
+     * Returns the registry key of any given block item
+     * @param name identifier of the block without mod id
+     * @return Block item registry key
+     */
     private static RegistryKey<Item> keyOfItem(String name) {
         return RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, name));
     }

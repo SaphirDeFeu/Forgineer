@@ -8,6 +8,9 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
 public final class ForgineerTags {
+    /**
+     * Item Tags
+     */
     public static final class Items {
         public static final TagKey<Item> DRILL_TOOL_MATERIALS = TagKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, "drill_tool_materials"));
         public static final TagKey<Item> AQUAMARINES = TagKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, "aquamarines"));
@@ -28,8 +31,15 @@ public final class ForgineerTags {
             public static final TagKey<Item> MOLTEN_GOLD = TagKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, "can_be_smelt_into/molten_gold"));
             public static final TagKey<Item> MOLTEN_IRON = TagKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, "can_be_smelt_into/molten_iron"));
         }
+
+        public static final class Enchantable {
+            public static final TagKey<Item> PRISTINE_ENCHANTABLE = TagKey.of(RegistryKeys.ITEM, Identifier.of(Forgineer.MOD_ID, "enchantable/pristine"));
+        }
     }
 
+    /**
+     * Block Tags
+     */
     public static final class Blocks {
         public static final TagKey<Block> INCORRECT_FOR_DRILL = TagKey.of(RegistryKeys.BLOCK, Identifier.of(Forgineer.MOD_ID, "incorrect_for_drill"));
         public static final TagKey<Block> NEEDS_DRILL = TagKey.of(RegistryKeys.BLOCK, Identifier.of(Forgineer.MOD_ID, "needs_drill"));

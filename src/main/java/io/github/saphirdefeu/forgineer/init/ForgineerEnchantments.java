@@ -9,6 +9,11 @@ import net.minecraft.util.Identifier;
 public class ForgineerEnchantments {
     public static final RegistryKey<Enchantment> PRISTINE = of("pristine");
 
+    /**
+     * Returns an enchantment's registry key
+     * @param name enchantment identifier without mod id
+     * @return its registry key
+     */
     private static RegistryKey<Enchantment> of(String name) {
         return RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(Forgineer.MOD_ID, name));
     }

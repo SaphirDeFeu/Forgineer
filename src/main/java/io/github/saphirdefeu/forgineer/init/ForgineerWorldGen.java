@@ -27,6 +27,9 @@ public class ForgineerWorldGen {
             placeUndergroundOres();
     }
 
+    /**
+     * Modifies some biomes to allow for placement of ores
+     */
     private static void placeUndergroundOres() {
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, GRAPHITE_PLACED_KEY);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.UNDERGROUND_ORES, RUBY_ORE_PLACED_KEY);

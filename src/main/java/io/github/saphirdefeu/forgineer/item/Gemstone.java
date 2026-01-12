@@ -16,6 +16,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class Gemstone {
+    /**
+     * Modifies the server's state to allow for cross-session saves of attribute modifiers
+     * @param world this world's instance
+     * @param user the player whose attribute modifier will be saved
+     * @param attributeModifier the attribute modifier to be changed
+     * @param attribute exactly what happens to {@code attributeModifier}
+     */
     public static void saveAttributeModifier(World world, PlayerEntity user, EntityAttributeModifier attributeModifier, RegistryEntry<EntityAttribute> attribute) {
         // Retrieve Server State
         MinecraftServer server = world.getServer();
@@ -61,6 +68,11 @@ public abstract class Gemstone {
         serverState.setPlayers(players);
     }
 
+    /**
+     * Is this block a Gemstone?
+     * @param block the block
+     * @return yes or no
+     */
     public static boolean isGemstone(Block block) {
         Identifier id = Registries.BLOCK.getId(block);
 
@@ -68,6 +80,7 @@ public abstract class Gemstone {
         // detecting a gemstone in the vicinity
         // However, I cannot find such a way to make it work,
         // so it is now hardcoded.
+        // good luck everyone else
         return switch (id.toString()) {
             case "forgineer:ruby_ore",
                  "forgineer:bloodstone_ore",

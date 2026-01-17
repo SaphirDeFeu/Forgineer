@@ -110,7 +110,7 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "forgineer:scorching_mines"
+            "forgineer:scorching_caves"
           ]
         },
         "then_run": {
@@ -120,7 +120,7 @@
               "type": "minecraft:condition",
               "if_true": {
                 "type": "minecraft:noise_threshold",
-                "noise": "minecraft:continentalness",
+                "noise": "minecraft:powder_snow",
                 "min_threshold": 0.2,
                 "max_threshold": 2
               },
@@ -154,12 +154,28 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "forgineer:frozen_mines"
+            "forgineer:frozen_caves"
           ]
         },
         "then_run": {
           "type": "minecraft:sequence",
           "sequence": [
+            {
+              "type": "minecraft:condition",
+              "if_true": {
+                "type": "minecraft:stone_depth",
+                "offset": 2,
+                "surface_type": "ceiling",
+                "add_surface_depth": false,
+                "secondary_depth_range": 0
+              },
+              "then_run": {
+                "type": "minecraft:block",
+                "result_state": {
+                  "Name": "minecraft:packed_ice"
+                }
+              }
+            },
             {
               "type": "minecraft:condition",
               "if_true": {
@@ -175,41 +191,37 @@
                   {
                     "type": "minecraft:condition",
                     "if_true": {
-                      "type": "minecraft:noise_threshold",
-                      "noise": "minecraft:calcite",
-                      "min_threshold": 0.2,
-                      "max_threshold": 0.6
+                      "type": "minecraft:not",
+                      "invert": {
+                        "type": "minecraft:noise_threshold",
+                        "noise": "minecraft:powder_snow",
+                        "min_threshold": 0.2,
+                        "max_threshold": 2
+                      }
                     },
                     "then_run": {
                       "type": "minecraft:block",
                       "result_state": {
-                        "Name": "minecraft:packed_ice"
+                        "Name": "minecraft:snow_block"
                       }
                     }
                   },
                   {
-                    "type": "minecraft:block",
-                    "result_state": {
-                      "Name": "minecraft:snow_block"
+                    "type": "minecraft:condition",
+                    "if_true": {
+                      "type": "minecraft:noise_threshold",
+                      "noise": "minecraft:powder_snow",
+                      "min_threshold": 0.2,
+                      "max_threshold": 2
+                    },
+                    "then_run": {
+                      "type": "minecraft:block",
+                      "result_state": {
+                        "Name": "packed_ice"
+                      }
                     }
                   }
                 ]
-              }
-            },
-            {
-              "type": "minecraft:condition",
-              "if_true": {
-                "type": "minecraft:stone_depth",
-                "offset": 2,
-                "surface_type": "ceiling",
-                "add_surface_depth": false,
-                "secondary_depth_range": 0
-              },
-              "then_run": {
-                "type": "minecraft:block",
-                "result_state": {
-                  "Name": "minecraft:packed_ice"
-                }
               }
             }
           ]

@@ -37,7 +37,7 @@
           }
         },
         {
-          "biome": "forgineer:scorching_mines",
+          "biome": "forgineer:scorching_caves",
           "parameters": {
             "temperature": [
               0.8,
@@ -52,7 +52,7 @@
           }
         },
         {
-          "biome": "forgineer:frozen_mines",
+          "biome": "forgineer:frozen_caves",
           "parameters": {
             "temperature": [
               -1,

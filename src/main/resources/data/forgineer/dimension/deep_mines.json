@@ -1,0 +1,87 @@
+{
+  "type": "forgineer:deep_mines",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "forgineer:caves",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
+        {
+          "biome": "minecraft:lush_caves",
+          "parameters": {
+            "temperature": [
+              0.5,
+              1
+            ],
+            "humidity": 0,
+            "continentalness": 0.4,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "minecraft:dripstone_caves",
+          "parameters": {
+            "temperature": [
+              0,
+              0.5
+            ],
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0.5,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "forgineer:scorching_mines",
+          "parameters": {
+            "temperature": [
+              0.8,
+              2
+            ],
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0.1,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "forgineer:frozen_mines",
+          "parameters": {
+            "temperature": [
+              -1,
+              -0.7
+            ],
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0.5,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "minecraft:deep_dark",
+          "parameters": {
+            "temperature": [
+              -1,
+              2
+            ],
+            "humidity": 0.1,
+            "continentalness": 0.59,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        }
+      ]
+    }
+  }
+}

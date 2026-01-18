@@ -44,8 +44,11 @@
   "item.forgineer.topaz_netherite": "Topaz-Infused Netherite Ingot",
   "item.forgineer.gemstone_detector": "Gemstone Detector",
   "item.forgineer.drill": "Drill",
+  "item.forgineer.vulcanite": "Vulcanite",
+  "item.forgineer.vulcanite_ore": "Vulcanite Ore",
 
   "block.forgineer.graphite": "Graphite",
+  "block.forgineer.vulcanite_ore": "Vulcanite Ore",
   "block.forgineer.ruby_ore": "Ruby Ore",
   "block.forgineer.bloodstone_ore": "Bloodstone Ore",
   "block.forgineer.onyx_ore": "Onyx Ore",

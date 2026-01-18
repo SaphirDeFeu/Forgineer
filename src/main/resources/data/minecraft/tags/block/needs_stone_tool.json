@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "forgineer:graphite"
+    "forgineer:graphite",
+    "forgineer:vulcanite_ore"
   ]
 }

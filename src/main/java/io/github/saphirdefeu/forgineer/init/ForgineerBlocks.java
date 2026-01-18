@@ -88,6 +88,15 @@ public final class ForgineerBlocks {
             true
     );
 
+    public static final Block VULCANITE_ORE = register("vulcanite_ore", Block::new,
+            AbstractBlock.Settings.create()
+                    .sounds(BlockSoundGroup.STONE)
+                    .requiresTool()
+                    .hardness(2.0f)
+                    .resistance(10.0f),
+            true
+    );
+
     /**
      * Registers a block to the Minecraft registry
      * @param name identifier of the block without mod id
@@ -146,6 +155,7 @@ public final class ForgineerBlocks {
                     itemGroup.add(ForgineerBlocks.SAPPHIRE_ORE.asItem());
                     itemGroup.add(ForgineerBlocks.AQUAMARINE_ORE.asItem());
                     itemGroup.add(ForgineerBlocks.TOPAZ_ORE.asItem());
+                    itemGroup.add(ForgineerBlocks.VULCANITE_ORE.asItem());
                 });
     }
 

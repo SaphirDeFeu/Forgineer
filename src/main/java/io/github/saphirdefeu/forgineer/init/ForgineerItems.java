@@ -67,6 +67,8 @@ public class ForgineerItems {
     public static final Item GEMSTONE_DETECTOR = register("gemstone_detector", GemstoneDetector::new, GemstoneDetector.settings);
     public static final Item DRILL = register("drill", Drill::new, Drill.settings);
 
+    public static final Item VULCANITE = register("vulcanite", Item::new, new Item.Settings());
+
     /**
      * Registers an item to the Minecraft registry
      * @param name identifier of the item without mod id
@@ -138,6 +140,8 @@ public class ForgineerItems {
 
                     itemGroup.add(GEMSTONE_DETECTOR);
                     itemGroup.add(DRILL);
+
+                    itemGroup.add(VULCANITE);
                 }
         );
     }

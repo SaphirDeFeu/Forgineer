@@ -83,5 +83,10 @@
   "forgineer.text.consume_gemstone_success": "The %1$s seems to bring you additional powers...",
   "forgineer.text.consume_gemstone_fail": "You have nothing to gain from this...",
 
-  "itemGroup.forgineer": "Forgineer"
+  "itemGroup.forgineer": "Forgineer",
+
+  "advancement.forgineer.root": "Forgineer",
+  "advancement.forgineer.root.description": "One must always start somewhere",
+  "advancement.forgineer.use_gem": "A Taste for Power",
+  "advancement.forgineer.use_gem.description": "Only 500 more to go! Or so I've heard."
 }

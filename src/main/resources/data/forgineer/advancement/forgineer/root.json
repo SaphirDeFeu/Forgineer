@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "id": "forgineer:graphite_powder"
+    },
+    "title": {
+      "translate": "advancement.forgineer.root"
+    },
+    "description": {
+      "translate": "advancement.forgineer.root.description"
+    },
+    "background": "forgineer:gui/advancements/backgrounds/forgineer",
+    "announce_to_chat": false,
+    "show_toast": false
+  },
+  "criteria": {
+    "graphite_powder": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "forgineer:graphite_powder"
+          }
+        ]
+      }
+    }
+  }
+}

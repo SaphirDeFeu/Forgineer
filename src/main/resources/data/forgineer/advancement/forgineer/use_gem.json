@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "id": "forgineer:ruby"
+    },
+    "title": {
+      "translate": "advancement.forgineer.use_gem"
+    },
+    "description": {
+      "translate": "advancement.forgineer.use_gem.description"
+    }
+  },
+  "parent": "forgineer:forgineer/root",
+  "criteria": {
+    "use_gem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "#forgineer:cut_gems"
+          }
+        ]
+      }
+    }
+  }
+}

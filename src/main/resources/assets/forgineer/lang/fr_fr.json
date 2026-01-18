@@ -83,5 +83,10 @@
   "forgineer.text.consume_gemstone_success": "Le %1$s semble vous apporter des pouvoirs supplémentaires...",
   "forgineer.text.consume_gemstone_fail": "Vous n'avez rien à gagner grâce à cela...",
 
-  "itemGroup.forgineer": "Forgineer"
+  "itemGroup.forgineer": "Forgineer",
+
+  "advancement.forgineer.root": "Forgineer",
+  "advancement.forgineer.root.description": "On doit bien commencer quelque part",
+  "advancement.forgineer.use_gem": "Un goût du pouvoir",
+  "advancement.forgineer.use_gem.description": "Seulement 500 de plus à obtenir! Ou de ce que j'aurais entendu."
 }

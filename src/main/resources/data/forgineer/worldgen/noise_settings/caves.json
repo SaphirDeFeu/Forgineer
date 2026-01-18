@@ -61,7 +61,7 @@
                       "argument2": {
                         "type": "minecraft:add",
                         "argument1": -0.9375,
-                        "argument2": "minecraft:nether/base_3d_noise"
+                        "argument2": "minecraft:overworld/caves/spaghetti_roughness_function"
                       }
                     }
                   }

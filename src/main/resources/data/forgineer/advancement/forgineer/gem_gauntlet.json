@@ -1,0 +1,83 @@
+{
+  "display": {
+    "icon": {
+      "id": "forgineer:topaz_netherite",
+      "components": {
+        "minecraft:enchantment_glint_override": true
+      }
+    },
+    "title": {
+      "translate": "advancement.forgineer.gem_gauntlet"
+    },
+    "description": {
+      "translate": "advancement.forgineer.gem_gauntlet.description"
+    },
+    "frame": "challenge"
+  },
+  "parent": "forgineer:forgineer/find_netherite_gem",
+  "criteria": {
+    "find_ruby": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "forgineer:ruby_netherite"
+          }
+        ]
+      }
+    },
+    "find_bloodstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "forgineer:bloodstone_netherite"
+          }
+        ]
+      }
+    },
+    "find_onyx": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "forgineer:onyx_netherite"
+          }
+        ]
+      }
+    },
+    "find_sapphire": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "forgineer:sapphire_netherite"
+          }
+        ]
+      }
+    },
+    "find_aquamarine": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "forgineer:aquamarine_netherite"
+          }
+        ]
+      }
+    },
+    "find_topaz": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "forgineer:topaz_netherite"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 20
+  }
+}

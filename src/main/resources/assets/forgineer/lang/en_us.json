@@ -87,6 +87,10 @@
 
   "advancement.forgineer.root": "Forgineer",
   "advancement.forgineer.root.description": "One must always start somewhere",
-  "advancement.forgineer.use_gem": "A Taste for Power",
-  "advancement.forgineer.use_gem.description": "Only 500 more to go! Or so I've heard."
+  "advancement.forgineer.find_gem": "A Taste of Power",
+  "advancement.forgineer.find_gem.description": "Only 500 more to go! Or so I've heard.",
+  "advancement.forgineer.find_netherite_gem": "A Meal of Power",
+  "advancement.forgineer.find_netherite_gem.description": "Is this starting to get old yet?",
+  "advancement.forgineer.gem_gauntlet": "The Gauntlet",
+  "advancement.forgineer.gem_gauntlet.description": "Is there more power to be had?"
 }

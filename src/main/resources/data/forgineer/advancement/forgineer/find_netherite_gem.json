@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "id": "forgineer:ruby_netherite"
+    },
+    "title": {
+      "translate": "advancement.forgineer.find_netherite_gem"
+    },
+    "description": {
+      "translate": "advancement.forgineer.find_netherite_gem.description"
+    },
+    "frame": "goal"
+  },
+  "parent": "forgineer:forgineer/find_gem",
+  "criteria": {
+    "find_gem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "#forgineer:netherite_gems"
+          }
+        ]
+      }
+    }
+  }
+}

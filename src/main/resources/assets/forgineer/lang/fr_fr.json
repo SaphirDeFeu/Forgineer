@@ -87,6 +87,10 @@
 
   "advancement.forgineer.root": "Forgineer",
   "advancement.forgineer.root.description": "On doit bien commencer quelque part",
-  "advancement.forgineer.use_gem": "Un goût du pouvoir",
-  "advancement.forgineer.use_gem.description": "Seulement 500 de plus à obtenir! Ou de ce que j'aurais entendu."
+  "advancement.forgineer.find_gem": "Un goût du pouvoir",
+  "advancement.forgineer.find_gem.description": "Seulement 500 de plus à obtenir! Ou de ce que j'aurais entendu.",
+  "advancement.forgineer.find_netherite_gem": "Un repas du pouvoir",
+  "advancement.forgineer.find_netherite_gem.description": "Est-ce que ça commence à vous agacer?",
+  "advancement.forgineer.gem_gauntlet": "Le Gant",
+  "advancement.forgineer.gem_gauntlet.description": "Y a-t-il plus de pouvoir à obtenir?"
 }

@@ -1,6 +1,7 @@
 package io.github.saphirdefeu.forgineer.init;
 
 import io.github.saphirdefeu.forgineer.Forgineer;
+import io.github.saphirdefeu.forgineer.block.DeepMinesEntry;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -96,6 +97,8 @@ public final class ForgineerBlocks {
                     .resistance(10.0f),
             true
     );
+
+    public static final Block DEEP_MINES_PORTAL = register("deep_mines_portal", DeepMinesEntry::new, DeepMinesEntry.settings, false);
 
     /**
      * Registers a block to the Minecraft registry

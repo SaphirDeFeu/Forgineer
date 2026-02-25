@@ -3,6 +3,7 @@ package io.github.saphirdefeu.forgineer.event;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import io.github.saphirdefeu.forgineer.Forgineer;
+import io.github.saphirdefeu.forgineer.item.Gemstone;
 import io.github.saphirdefeu.forgineer.state.PlayerData;
 import io.github.saphirdefeu.forgineer.state.StateManager;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
@@ -27,29 +28,7 @@ public class PlayConnectionListener {
         StateManager state = StateManager.getServerState(minecraftServer);
 
         PlayerEntity player = serverPlayNetworkHandler.getPlayer();
-        HashMap<String, PlayerData> players = state.getPlayers();
-        String uuid = player.getUuidAsString();
-        if(!players.containsKey(uuid)) {
-            return;
-        }
 
-        PlayerData playerData = players.get(uuid);
-        ArrayList<String> attributeIdentifiers = playerData.getAttributeIdentifiers();
-        ArrayList<Double> attributeValues = playerData.getAttributeValues();
-
-        for(int i = 0; i < attributeValues.size(); i++) {
-            String attributeIdentifier = attributeIdentifiers.get(i);
-            double attributeValue = attributeValues.get(i);
-
-            EntityAttributeModifier entityAttributeModifier = new EntityAttributeModifier(
-                    Identifier.of(Forgineer.MOD_ID, "gemstone"), attributeValue, EntityAttributeModifier.Operation.ADD_VALUE
-            );
-
-            Multimap<RegistryEntry<EntityAttribute>, EntityAttributeModifier> modifierMultimap = ArrayListMultimap.create();
-            // Convert Attribute ID to RegistryEntry
-            RegistryEntry<EntityAttribute> attributeEntry = Registries.ATTRIBUTE.getEntry(Registries.ATTRIBUTE.get(Identifier.of(attributeIdentifier)));
-            modifierMultimap.put(attributeEntry, entityAttributeModifier);
-            player.getAttributes().addTemporaryModifiers(modifierMultimap);
-        }
+        Gemstone.setPlayerAttributeModifiers(player, state);
     }
 }

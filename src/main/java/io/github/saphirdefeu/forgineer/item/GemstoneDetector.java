@@ -1,14 +1,11 @@
 package io.github.saphirdefeu.forgineer.item;
 
-import io.github.saphirdefeu.forgineer.Forgineer;
 import io.github.saphirdefeu.forgineer.init.ForgineerEnchantments;
 import net.minecraft.block.Block;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -68,7 +65,7 @@ public class GemstoneDetector extends Item {
         }
 
         if(ores.isEmpty()) {
-            user.getStackInHand(hand).setDamage(user.getStackInHand(hand).getMaxDamage() - 1);
+            user.getStackInHand(hand).setDamage(0);
             return ActionResult.PASS;
         }
 
@@ -89,7 +86,7 @@ public class GemstoneDetector extends Item {
         }
 
         if(minDist == RADIUS + 10) {
-            user.getStackInHand(hand).setDamage(user.getStackInHand(hand).getMaxDamage() - 1);
+            user.getStackInHand(hand).setDamage(0);
             return ActionResult.PASS;
         }
 

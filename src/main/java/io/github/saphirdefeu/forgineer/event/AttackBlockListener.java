@@ -1,6 +1,5 @@
 package io.github.saphirdefeu.forgineer.event;
 
-import io.github.saphirdefeu.forgineer.init.ForgineerBlocks;
 import io.github.saphirdefeu.forgineer.init.ForgineerItems;
 import io.github.saphirdefeu.forgineer.item.Drill;
 import net.minecraft.entity.player.PlayerEntity;

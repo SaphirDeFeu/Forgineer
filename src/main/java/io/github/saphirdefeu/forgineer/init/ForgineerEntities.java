@@ -31,6 +31,6 @@ public class ForgineerEntities {
     }
 
     public static void initialize() {
-        FabricDefaultAttributeRegistry.register(AUTOMATON, AutomatonEntity.createMobAttributes());
+        FabricDefaultAttributeRegistry.register(AUTOMATON, AutomatonEntity.createAutomatonAttributes());
     }
 }

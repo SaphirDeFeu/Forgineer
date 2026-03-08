@@ -1,5 +1,7 @@
 package io.github.saphirdefeu.forgineer.entity;
 
+import io.github.saphirdefeu.forgineer.Forgineer;
+import io.github.saphirdefeu.forgineer.entity.ai.goal.AutomatonAttackSuspect;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -29,31 +31,33 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
     private static final UniformIntProvider ANGER_TIME_RANGE;
     private int attackTicksLeft;
     private int angerTime;
+    private boolean isAngry;
     @Nullable
     private UUID angryAt;
 
     private HashMap<UUID, Integer> reputationMap = new HashMap<>();
-    private int maxReputation = 50000;
+    public static final int MAX_REPUTATION = 50000;
 
     public AutomatonEntity(EntityType<? extends GolemEntity> entityType, World world) {
         super(entityType, world);
     }
 
     protected void initGoals() {
+        this.goalSelector.add(1, new AutomatonAttackSuspect(this));
         this.goalSelector.add(2, new WanderNearTargetGoal(this, 0.2, 32.0f));
+        this.goalSelector.add(3, new WanderAroundPointOfInterestGoal(this, 0.2, false));
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(8, new LookAroundGoal(this));
-        this.targetSelector.add(3, new ActiveTargetGoal(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
-        this.targetSelector.add(4, new UniversalAngerGoal(this, false));
+        this.targetSelector.add(4, new UniversalAngerGoal<>(this, false));
     }
 
-    public static DefaultAttributeContainer.Builder createIronGolemAttributes() {
+    public static DefaultAttributeContainer.Builder createAutomatonAttributes() {
         return MobEntity.createMobAttributes()
-                .add(EntityAttributes.MAX_HEALTH, 100.0F)
-                .add(EntityAttributes.MOVEMENT_SPEED, 0.25F)
-                .add(EntityAttributes.KNOCKBACK_RESISTANCE, 1.0F)
-                .add(EntityAttributes.ATTACK_DAMAGE, 15.0F)
-                .add(EntityAttributes.STEP_HEIGHT, 1.0F);
+                .add(EntityAttributes.MAX_HEALTH, 100.0f)
+                .add(EntityAttributes.MOVEMENT_SPEED, 0.2f)
+                .add(EntityAttributes.KNOCKBACK_RESISTANCE, 1.0f)
+                .add(EntityAttributes.ATTACK_DAMAGE, 1.0f)
+                .add(EntityAttributes.STEP_HEIGHT, 1.0f);
     }
 
     @Override
@@ -67,16 +71,21 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
 
         Collection<ServerPlayerEntity> playersNear = PlayerLookup.around((ServerWorld) this.getWorld(), this.getPos(), 32.0f);
 
+        Forgineer.LOGGER.info("{} players around", playersNear.size());
+
         updatePlayerReputation(playersNear);
+
+        Forgineer.LOGGER.info("{} players suspect", reputationMap.size());
         ServerPlayerEntity highestRepPlayer = getHighestReputation(playersNear);
         if(highestRepPlayer != null) {
+            Forgineer.LOGGER.info(highestRepPlayer.getName().getString());
             this.setTarget(highestRepPlayer);
 
             int playerRep = reputationMap.get(highestRepPlayer.getUuid());
-            if(playerRep > maxReputation / 2) this.setAngryAt(highestRepPlayer.getUuid());
+            if(playerRep > MAX_REPUTATION / 2) this.setAngryAt(highestRepPlayer.getUuid());
+        } else {
+            Forgineer.LOGGER.info("no name");
         }
-
-        this.tickAngerLogic((ServerWorld)this.getWorld(), true);
     }
 
     private void updatePlayerReputation(Collection<ServerPlayerEntity> players) {
@@ -85,7 +94,18 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
             if(!reputationMap.containsKey(uuid)) reputationMap.put(uuid, 1);
         }
 
-        reputationMap.replaceAll((u, v) -> reputationMap.get(u) - 1);
+        for(UUID uuid : reputationMap.keySet()) {
+            int val = reputationMap.get(uuid);
+            if(val <= 0) {
+                reputationMap.put(uuid, 0);
+            } else {
+                reputationMap.put(uuid, val - 1);
+            }
+
+            // check whether any player is seen doing any forbidden activites
+            // this includes walking, sprinting, opening a chest or mining gemstones
+            // hopefully this is doable
+        }
     }
 
     private @Nullable ServerPlayerEntity getHighestReputation(Collection<ServerPlayerEntity> players) {
@@ -106,6 +126,22 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
         return highestRepPlayer;
     }
 
+    public void addReputation(UUID uuid, int val) {
+        if(!reputationMap.containsKey(uuid)) return;
+        int rep = reputationMap.get(uuid) + val;
+        if(rep > MAX_REPUTATION) rep = MAX_REPUTATION;
+        if(rep < 0) rep = 0;
+        reputationMap.put(uuid, rep);
+    }
+
+    public void removeReputation(UUID uuid, int val) {
+        if(!reputationMap.containsKey(uuid)) return;
+        int rep = reputationMap.get(uuid) - val;
+        if(rep> MAX_REPUTATION) rep = MAX_REPUTATION;
+        if(rep < 0) rep = 0;
+        reputationMap.put(uuid, rep);
+    }
+
     @Override
     public boolean canTarget(EntityType<?> type) {
         return true;
@@ -118,15 +154,27 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
     public boolean tryAttack(ServerWorld world, Entity target) {
         this.attackTicksLeft = 2;
         world.sendEntityStatus(this, (byte)4);
-        float f = this.getAttackDamage();
-        float g = (int)f > 0 ? f / 2.0F + (float)this.random.nextInt((int)f) : f;
+        float attackDamage = this.getAttackDamage();
+        float g = (int) attackDamage > 0 ? attackDamage / 2.0F + (float)this.random.nextInt((int) attackDamage) : attackDamage;
         DamageSource damageSource = this.getDamageSources().mobAttack(this);
         boolean bl = target.damage(world, damageSource, g);
         if (bl) {
             EnchantmentHelper.onTargetDamaged(world, target, damageSource);
         }
 
-        this.playSound(SoundEvents.ENTITY_IRON_GOLEM_DAMAGE, 1.0F, 1.0F);
+        this.playSound(SoundEvents.ENTITY_GUARDIAN_ATTACK, 1.0F, 0.5F);
+        return bl;
+    }
+
+    @Override
+    public boolean damage(ServerWorld world, DamageSource source, float amount) {
+        boolean bl = super.damage(world, source, amount);
+        Entity attacker = source.getAttacker();
+        if(attacker == null) return bl;
+        if(!(attacker instanceof PlayerEntity)) return bl;
+
+        UUID uuid = attacker.getUuid();
+        addReputation(uuid, MAX_REPUTATION);
         return bl;
     }
 
@@ -136,7 +184,7 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
 
     @Override
     public int getAngerTime() {
-        return 0;
+        return angerTime;
     }
 
     @Override
@@ -152,6 +200,11 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
     @Override
     public void setAngryAt(@Nullable UUID angryAt) {
         this.angryAt = angryAt;
+        this.isAngry = angryAt != null;
+    }
+
+    public boolean isAngry() {
+        return isAngry;
     }
 
     @Override

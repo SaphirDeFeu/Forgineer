@@ -71,20 +71,13 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
 
         Collection<ServerPlayerEntity> playersNear = PlayerLookup.around((ServerWorld) this.getWorld(), this.getPos(), 32.0f);
 
-        Forgineer.LOGGER.info("{} players around", playersNear.size());
-
         updatePlayerReputation(playersNear);
-
-        Forgineer.LOGGER.info("{} players suspect", reputationMap.size());
         ServerPlayerEntity highestRepPlayer = getHighestReputation(playersNear);
         if(highestRepPlayer != null) {
-            Forgineer.LOGGER.info(highestRepPlayer.getName().getString());
             this.setTarget(highestRepPlayer);
 
             int playerRep = reputationMap.get(highestRepPlayer.getUuid());
             if(playerRep > MAX_REPUTATION / 2) this.setAngryAt(highestRepPlayer.getUuid());
-        } else {
-            Forgineer.LOGGER.info("no name");
         }
     }
 
@@ -92,6 +85,10 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
         for(ServerPlayerEntity player : players) {
             UUID uuid = player.getUuid();
             if(!reputationMap.containsKey(uuid)) reputationMap.put(uuid, 1);
+
+            // +150 rep for every tick the player is running (eq. to +3k per second)
+            if(!this.canSee(player)) return;
+            if(player.isSprinting()) addReputation(uuid, 150); //150 per tick of sprinting
         }
 
         for(UUID uuid : reputationMap.keySet()) {
@@ -101,10 +98,6 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
             } else {
                 reputationMap.put(uuid, val - 1);
             }
-
-            // check whether any player is seen doing any forbidden activites
-            // this includes walking, sprinting, opening a chest or mining gemstones
-            // hopefully this is doable
         }
     }
 
@@ -210,6 +203,12 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
     @Override
     public void chooseRandomAngerTime() {
         this.setAngerTime(ANGER_TIME_RANGE.get(this.random));
+    }
+
+    public void playerMiningGemstoneEvent(PlayerEntity player) {
+        if(!this.canSee(player)) return;
+
+        addReputation(player.getUuid(), 20000);
     }
 
     static {

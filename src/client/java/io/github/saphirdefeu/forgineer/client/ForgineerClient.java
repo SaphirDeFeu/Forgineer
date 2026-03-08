@@ -11,12 +11,12 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 
 public class ForgineerClient implements ClientModInitializer {
-    public static final EntityModelLayer MODEL_CUBE_LAYER = new EntityModelLayer(Identifier.of(Forgineer.MOD_ID, "automaton"), "main");
+    public static final EntityModelLayer MODEL_AUTOMATON_LAYER = new EntityModelLayer(Identifier.of(Forgineer.MOD_ID, "automaton"), "main");
 
     @Override
     public void onInitializeClient() {
         EntityRenderers.register(ForgineerEntities.AUTOMATON, AutomatonEntityRenderer::new);
 
-        EntityModelLayerRegistry.registerModelLayer(MODEL_CUBE_LAYER, AutomatonEntityModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(MODEL_AUTOMATON_LAYER, AutomatonEntityModel::getTexturedModelData);
     }
 }

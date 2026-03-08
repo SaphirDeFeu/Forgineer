@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class AutomatonEntityRenderer extends MobEntityRenderer<AutomatonEntity, AutomatonEntityRenderState, AutomatonEntityModel> {
     public AutomatonEntityRenderer(EntityRendererFactory.Context context) {
-        super(context, new AutomatonEntityModel(context.getPart(ForgineerClient.MODEL_CUBE_LAYER)), 0.5f);
+        super(context, new AutomatonEntityModel(context.getPart(ForgineerClient.MODEL_AUTOMATON_LAYER)), 0.5f);
     }
 
     @Override

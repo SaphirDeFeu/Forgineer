@@ -3,3 +3,4 @@ accessWidener v2 named
 # Access getRecipeRemainder for all
 extendable method net/minecraft/item/Item getRecipeRemainder ()Lnet/minecraft/item/ItemStack;
 accessible field net/minecraft/world/World isClient Z
+accessible method net/minecraft/client/render/entity/EntityRenderers register (Lnet/minecraft/entity/EntityType;Lnet/minecraft/client/render/entity/EntityRendererFactory;)V

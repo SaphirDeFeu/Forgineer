@@ -2,6 +2,7 @@ package io.github.saphirdefeu.forgineer.entity;
 
 import io.github.saphirdefeu.forgineer.Forgineer;
 import io.github.saphirdefeu.forgineer.entity.ai.goal.AutomatonAttackSuspect;
+import io.github.saphirdefeu.forgineer.init.ForgineerEntities;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -23,6 +24,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.TimeHelper;
+import net.minecraft.util.TypeFilter;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
@@ -30,6 +32,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 public class AutomatonEntity extends GolemEntity implements Angerable {
@@ -181,7 +184,11 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
         if(!(attacker instanceof PlayerEntity)) return bl;
 
         UUID uuid = attacker.getUuid();
-        addReputation(uuid, MAX_REPUTATION);
+        // update all automatons in the nearby area to ALSO shoot the player
+        List<AutomatonEntity> automatons = ForgineerEntities.getEntitiesAround(world, this.getBlockPos(), 32.0f, TypeFilter.instanceOf(AutomatonEntity.class));
+        for(AutomatonEntity automaton : automatons) {
+            automaton.addReputation(uuid, MAX_REPUTATION);   
+        }
         return bl;
     }
 

@@ -16,6 +16,9 @@ import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
+import net.minecraft.nbt.NbtList;
 import net.minecraft.particle.DustColorTransitionParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.particle.SimpleParticleType;
@@ -25,15 +28,13 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.TimeHelper;
 import net.minecraft.util.TypeFilter;
+import net.minecraft.util.Uuids;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class AutomatonEntity extends GolemEntity implements Angerable {
 
@@ -69,7 +70,7 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
                 .add(EntityAttributes.MAX_HEALTH, 100.0f)
                 .add(EntityAttributes.MOVEMENT_SPEED, 0.2f)
                 .add(EntityAttributes.KNOCKBACK_RESISTANCE, 1.0f)
-                .add(EntityAttributes.ATTACK_DAMAGE, 1.0f)
+                .add(EntityAttributes.ATTACK_DAMAGE, 15.0f)
                 .add(EntityAttributes.STEP_HEIGHT, 1.0f);
     }
 
@@ -95,6 +96,51 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
         // send colored laser towards player with different colors based on current stage of anger
         beamCooldown--;
         if(highestReputation > MAX_REPUTATION / 16) shootColorLaser(false);
+    }
+
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+
+        NbtList nbtRepList = new NbtList();
+
+        for(UUID uuid : reputationMap.keySet()) {
+            // Convert UUID into a 4-sized integer array
+            int[] uuidArray = Uuids.toIntArray(uuid);
+
+            // Get corresponding value
+            int reputation = reputationMap.get(uuid);
+
+            NbtCompound keyValuePair = new NbtCompound();
+            keyValuePair.putIntArray("uuid", uuidArray);
+            keyValuePair.putInt("reputation", reputation);
+
+            nbtRepList.add(keyValuePair);
+        }
+
+        nbt.put("reputations", nbtRepList);
+
+        this.writeAngerToNbt(nbt);
+    }
+
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+
+        NbtList nbtRepList = nbt.getList("reputations").orElse(new NbtList());
+        int size = nbtRepList.size();
+        for(int i = 0; i < size; i++) {
+            // Any item in the reputations list is definitively a {uuid: int[4], reputation: int} element
+            NbtCompound playerReputation = (NbtCompound) nbtRepList.get(i);
+            Optional<int[]> uuidArrayOptional = playerReputation.getIntArray("uuid");
+            if(uuidArrayOptional.isEmpty()) continue;
+
+            int[] uuidArray = uuidArrayOptional.get();
+            UUID uuid = Uuids.toUuid(uuidArray);
+            int reputation = playerReputation.getInt("reputation", 0);
+
+            reputationMap.put(uuid, reputation);
+        }
+
+        this.readAngerFromNbt(this.getWorld(), nbt);
     }
 
     private void updatePlayerReputation(Collection<ServerPlayerEntity> players) {
@@ -187,7 +233,7 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
         // update all automatons in the nearby area to ALSO shoot the player
         List<AutomatonEntity> automatons = ForgineerEntities.getEntitiesAround(world, this.getBlockPos(), 32.0f, TypeFilter.instanceOf(AutomatonEntity.class));
         for(AutomatonEntity automaton : automatons) {
-            automaton.addReputation(uuid, MAX_REPUTATION);   
+            automaton.addReputation(uuid, MAX_REPUTATION);
         }
         return bl;
     }
@@ -257,7 +303,6 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
             double vy = this.random.nextGaussian() * 0.02;
             double vz = this.random.nextGaussian() * 0.02;
             serverWorld.spawnParticles(particle, currX, currY, currZ, 1, vx, vy, vz, 0);
-            Forgineer.LOGGER.info("Spawning particle @ {} {} {}", currX, currY, currZ);
             currX += dx;
             currY += dy;
             currZ += dz;

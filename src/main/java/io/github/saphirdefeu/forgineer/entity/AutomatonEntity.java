@@ -35,6 +35,8 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
     @Nullable
     private UUID angryAt;
 
+    private int highestReputation;
+
     private HashMap<UUID, Integer> reputationMap = new HashMap<>();
     public static final int MAX_REPUTATION = 50000;
 
@@ -44,7 +46,7 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
 
     protected void initGoals() {
         this.goalSelector.add(1, new AutomatonAttackSuspect(this));
-        this.goalSelector.add(2, new WanderNearTargetGoal(this, 0.2, 32.0f));
+        this.goalSelector.add(2, new WanderNearTargetGoal(this, 0.5, 32.0f));
         this.goalSelector.add(3, new WanderAroundPointOfInterestGoal(this, 0.2, false));
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(8, new LookAroundGoal(this));
@@ -116,6 +118,7 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
             }
         }
 
+        this.highestReputation = highestRep;
         return highestRepPlayer;
     }
 
@@ -209,6 +212,12 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
         if(!this.canSee(player)) return;
 
         addReputation(player.getUuid(), 20000);
+    }
+
+    public void playerOpenChestEvent(PlayerEntity player) {
+        if(!this.canSee(player)) return;
+
+        addReputation(player.getUuid(), 10000);
     }
 
     static {

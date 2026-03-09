@@ -2,48 +2,34 @@ package io.github.saphirdefeu.forgineer.event;
 
 import io.github.saphirdefeu.forgineer.entity.AutomatonEntity;
 import io.github.saphirdefeu.forgineer.init.ForgineerEntities;
-import io.github.saphirdefeu.forgineer.init.ForgineerItems;
-import io.github.saphirdefeu.forgineer.item.Drill;
-import io.github.saphirdefeu.forgineer.item.Gemstone;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypeFilter;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
 
 import java.util.List;
-import java.util.function.Predicate;
 
-public class AttackBlockListener {
+public class UseBlockListener {
 
-    public static ActionResult onAttackBlock(
-            PlayerEntity playerEntity,
-            World world,
-            Hand hand,
-            BlockPos blockPos,
-            Direction direction
-    ) {
-        // Mandatory checks to avoid problematic handling of the event
+    public static ActionResult onUseBlock(PlayerEntity playerEntity, World world, Hand hand, BlockHitResult blockHitResult) {
         if(world.isClient()) return ActionResult.PASS;
         if(playerEntity.getGameMode() == GameMode.SPECTATOR) return ActionResult.PASS;
 
-        if(playerEntity.getStackInHand(hand).isOf(ForgineerItems.DRILL)) {
-            return Drill.onAttackBlock(playerEntity, world, hand, blockPos, direction);
-        }
+        BlockPos blockPos = blockHitResult.getBlockPos();
+        if(blockPos == null) return ActionResult.PASS;
 
-        if(Gemstone.isGemstone(world.getBlockState(blockPos).getBlock())) {
+        if(world.getBlockState(blockPos).isOf(Blocks.CHEST)) {
             // if this is a gemstone that we're mining, get all automatons within a 32 block radius and call the appropriate method
             TypeFilter<Entity, AutomatonEntity> filter = TypeFilter.instanceOf(AutomatonEntity.class);
             List<AutomatonEntity> automatons = ForgineerEntities.getEntitiesAround(world, blockPos, 32.0f, filter);
             for(AutomatonEntity automaton : automatons) {
-                automaton.playerMiningGemstoneEvent(playerEntity);
+                automaton.playerOpenChestEvent(playerEntity);
             }
         }
 

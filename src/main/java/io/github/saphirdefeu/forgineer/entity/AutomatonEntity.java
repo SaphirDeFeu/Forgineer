@@ -278,12 +278,14 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
 
     public void shootColorLaser(boolean isAttackLaser) {
         if(beamCooldown > 0 && !isAttackLaser) return;
-        if(!this.canSee(this.getTarget())) return;
         if(beamCooldown == 0) beamCooldown = 20;
 
         World world = this.getWorld();
         LivingEntity target = this.getTarget();
         if(target == null || world == null) return;
+
+        if(!this.canSee(target)) return;
+
         if(world.isClient()) return;
         ServerWorld serverWorld = (ServerWorld) world;
 

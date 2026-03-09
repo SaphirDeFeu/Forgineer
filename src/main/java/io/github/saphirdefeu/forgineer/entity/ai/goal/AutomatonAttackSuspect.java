@@ -1,10 +1,13 @@
 package io.github.saphirdefeu.forgineer.entity.ai.goal;
 
 import io.github.saphirdefeu.forgineer.entity.AutomatonEntity;
+import io.github.saphirdefeu.forgineer.init.ForgineerEntities;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.util.TypeFilter;
 
 import java.util.EnumSet;
+import java.util.List;
 
 public class AutomatonAttackSuspect extends Goal {
     private final AutomatonEntity mob;
@@ -32,8 +35,11 @@ public class AutomatonAttackSuspect extends Goal {
 
     public boolean shouldContinue() {
         if (!this.target.isAlive()) {
-            this.mob.removeReputation(this.target.getUuid(), AutomatonEntity.MAX_REPUTATION);
-            this.mob.setAngryAt(null);
+            List<AutomatonEntity> automatonsNearby = ForgineerEntities.getEntitiesAround(this.mob.getWorld(), this.mob.getBlockPos(), 32.0f, TypeFilter.instanceOf(AutomatonEntity.class));
+            for(AutomatonEntity automaton : automatonsNearby) {
+                automaton.removeReputation(this.target.getUuid(), AutomatonEntity.MAX_REPUTATION);
+                automaton.setAngryAt(null);
+            }
             return false;
         } else {
             return !this.mob.getNavigation().isIdle() || this.canStart();
@@ -52,7 +58,7 @@ public class AutomatonAttackSuspect extends Goal {
 
         this.mob.getNavigation().startMovingTo(this.target, 0.1f);
         this.mob.setAttackTicksLeft(Math.max(this.mob.getAttackTicksLeft() - 1, 0));
-        if (distance > attackDistance && this.cooldown <= 0) {
+        if (distance > attackDistance && this.mob.getAttackTicksLeft() <= 0) {
             this.mob.setAttackTicksLeft(10);
             this.mob.tryAttack(getServerWorld(this.mob), this.target);
         }

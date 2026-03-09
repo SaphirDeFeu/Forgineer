@@ -91,7 +91,7 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
 
         // send colored laser towards player with different colors based on current stage of anger
         beamCooldown--;
-        shootColorLaser(false);
+        if(highestReputation > MAX_REPUTATION / 16) shootColorLaser(false);
     }
 
     private void updatePlayerReputation(Collection<ServerPlayerEntity> players) {

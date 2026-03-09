@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -14,12 +15,17 @@ import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.particle.DustColorTransitionParticleEffect;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.particle.SimpleParticleType;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.TimeHelper;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
@@ -29,16 +35,18 @@ import java.util.UUID;
 public class AutomatonEntity extends GolemEntity implements Angerable {
 
     private static final UniformIntProvider ANGER_TIME_RANGE;
-    private int attackTicksLeft;
-    private int angerTime;
+
     private boolean isAngry;
     @Nullable
     private UUID angryAt;
 
-    private int highestReputation;
+    private int attackTicksLeft;
+    private int angerTime;
+    private int beamCooldown = 20;
 
     private HashMap<UUID, Integer> reputationMap = new HashMap<>();
     public static final int MAX_REPUTATION = 50000;
+    private int highestReputation;
 
     public AutomatonEntity(EntityType<? extends GolemEntity> entityType, World world) {
         super(entityType, world);
@@ -65,9 +73,6 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
     @Override
     public void tickMovement() {
         super.tickMovement();
-        if (this.attackTicksLeft > 0) {
-            --this.attackTicksLeft;
-        }
 
         if(this.getWorld().isClient()) return;
 
@@ -79,8 +84,14 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
             this.setTarget(highestRepPlayer);
 
             int playerRep = reputationMap.get(highestRepPlayer.getUuid());
-            if(playerRep > MAX_REPUTATION / 2) this.setAngryAt(highestRepPlayer.getUuid());
+            if(playerRep > MAX_REPUTATION / 2) {
+                this.setAngryAt(highestRepPlayer.getUuid());
+            }
         }
+
+        // send colored laser towards player with different colors based on current stage of anger
+        beamCooldown--;
+        shootColorLaser(false);
     }
 
     private void updatePlayerReputation(Collection<ServerPlayerEntity> players) {
@@ -148,7 +159,6 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
     }
 
     public boolean tryAttack(ServerWorld world, Entity target) {
-        this.attackTicksLeft = 2;
         world.sendEntityStatus(this, (byte)4);
         float attackDamage = this.getAttackDamage();
         float g = (int) attackDamage > 0 ? attackDamage / 2.0F + (float)this.random.nextInt((int) attackDamage) : attackDamage;
@@ -159,6 +169,7 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
         }
 
         this.playSound(SoundEvents.ENTITY_GUARDIAN_ATTACK, 1.0F, 0.5F);
+        if(bl) this.shootColorLaser(true);
         return bl;
     }
 
@@ -176,6 +187,10 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
 
     public int getAttackTicksLeft() {
         return this.attackTicksLeft;
+    }
+
+    public void setAttackTicksLeft(int attackTicksLeft) {
+        this.attackTicksLeft = attackTicksLeft;
     }
 
     @Override
@@ -206,6 +221,51 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
     @Override
     public void chooseRandomAngerTime() {
         this.setAngerTime(ANGER_TIME_RANGE.get(this.random));
+    }
+
+    public void shootColorLaser(boolean isAttackLaser) {
+        if(beamCooldown > 0 && !isAttackLaser) return;
+        if(!this.canSee(this.getTarget())) return;
+        if(beamCooldown == 0) beamCooldown = 20;
+
+        World world = this.getWorld();
+        LivingEntity target = this.getTarget();
+        if(target == null || world == null) return;
+        if(world.isClient()) return;
+        ServerWorld serverWorld = (ServerWorld) world;
+
+        double dx = (target.getX() - this.getX()) / 10.0f;
+        double dy = (target.getY() - this.getY()) / 10.0f;
+        double dz = (target.getZ() - this.getZ()) / 10.0f;
+
+        double currX = this.getX();
+        double currY = this.getY() + 1.0; // so it doesn't spawn on the ground and instead a bit in the air
+        double currZ = this.getZ();
+
+        int color = getBeamColor(isAttackLaser);
+        DustColorTransitionParticleEffect particle = new DustColorTransitionParticleEffect(color, 0, 1.0f);
+
+        for(int i = 0; i < 10; i++) {
+            double vx = this.random.nextGaussian() * 0.02;
+            double vy = this.random.nextGaussian() * 0.02;
+            double vz = this.random.nextGaussian() * 0.02;
+            serverWorld.spawnParticles(particle, currX, currY, currZ, 1, vx, vy, vz, 0);
+            Forgineer.LOGGER.info("Spawning particle @ {} {} {}", currX, currY, currZ);
+            currX += dx;
+            currY += dy;
+            currZ += dz;
+        }
+    }
+
+    private int getBeamColor(boolean isAttackLaser) {
+        int color = 0;
+        if(this.highestReputation > MAX_REPUTATION / 16) color = 3395962; // green
+        if(this.highestReputation > MAX_REPUTATION / 8) color = 3507428; // blue
+        if(this.highestReputation > MAX_REPUTATION / 4) color = 16175917; // yellow
+        if(this.highestReputation > MAX_REPUTATION / 2) color = 14687012; // red
+        if(isAttackLaser) color = 16777215; // white
+
+        return color;
     }
 
     public void playerMiningGemstoneEvent(PlayerEntity player) {

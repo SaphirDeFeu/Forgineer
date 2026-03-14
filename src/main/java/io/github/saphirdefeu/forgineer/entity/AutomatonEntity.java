@@ -1,6 +1,5 @@
 package io.github.saphirdefeu.forgineer.entity;
 
-import io.github.saphirdefeu.forgineer.Forgineer;
 import io.github.saphirdefeu.forgineer.entity.ai.goal.AutomatonAttackSuspect;
 import io.github.saphirdefeu.forgineer.init.ForgineerEntities;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
@@ -17,12 +16,8 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.particle.DustColorTransitionParticleEffect;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.particle.SimpleParticleType;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
@@ -31,7 +26,6 @@ import net.minecraft.util.TypeFilter;
 import net.minecraft.util.Uuids;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;

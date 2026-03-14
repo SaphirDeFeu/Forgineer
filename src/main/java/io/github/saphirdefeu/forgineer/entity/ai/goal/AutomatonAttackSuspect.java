@@ -53,12 +53,12 @@ public class AutomatonAttackSuspect extends Goal {
     public void tick() {
         if(!this.mob.canSee(this.target)) return;
         this.mob.getLookControl().lookAt(this.target, 200.0f, 200.0f);
-        double attackDistance = this.mob.getWidth() * 2.0F * this.mob.getWidth() * 2.0F;
-        double distance = this.mob.squaredDistanceTo(this.target.getX(), this.target.getY(), this.target.getZ());
+        double attackDistanceSquared = this.mob.getWidth() * 2.0F * this.mob.getWidth() * 2.0F;
+        double distanceSquared = this.mob.squaredDistanceTo(this.target.getX(), this.target.getY(), this.target.getZ());
 
         this.mob.getNavigation().startMovingTo(this.target, 0.1f);
         this.mob.setAttackTicksLeft(Math.max(this.mob.getAttackTicksLeft() - 1, 0));
-        if (distance > attackDistance && this.mob.getAttackTicksLeft() <= 0) {
+        if (distanceSquared > attackDistanceSquared && this.mob.getAttackTicksLeft() <= 0 && distanceSquared <= 32.0f * 32.0f) {
             this.mob.setAttackTicksLeft(10);
             this.mob.tryAttack(getServerWorld(this.mob), this.target);
         }

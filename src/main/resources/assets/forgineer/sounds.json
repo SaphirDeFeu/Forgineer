@@ -1,0 +1,47 @@
+{
+    "automaton.friendly": {
+        "subtitle": "subtitles.forgineer.automaton.friendly",
+        "sounds": [
+            {
+                "name": "forgineer:mob/automaton/automaton_friendly",
+                "volume": 2.0
+            }
+        ]
+    },
+    "automaton.suspicious": {
+        "subtitle": "subtitles.forgineer.automaton.suspicious",
+        "sounds": [
+            {
+                "name": "forgineer:mob/automaton/automaton_suspicious",
+                "volume": 2.0
+            }
+        ]
+    },
+    "automaton.angered": {
+        "subtitle": "subtitles.forgineer.automaton.angered",
+        "sounds": [
+            {
+                "name": "forgineer:mob/automaton/automaton_angered",
+                "volume": 2.0
+            }
+        ]
+    },
+    "automaton.furious": {
+        "subtitle": "subtitles.forgineer.automaton.furious",
+        "sounds": [
+            {
+                "name": "forgineer:mob/automaton/automaton_furious",
+                "volume": 2.0
+            }
+        ]
+    },
+    "automaton.hostile": {
+        "subtitle": "subtitles.forgineer.automaton.hostile",
+        "sounds": [
+            {
+                "name": "forgineer:mob/automaton/automaton_hostile",
+                "volume": 2.0
+            }
+        ]
+    }
+}

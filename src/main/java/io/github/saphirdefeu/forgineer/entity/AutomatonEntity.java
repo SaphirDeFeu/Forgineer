@@ -2,6 +2,7 @@ package io.github.saphirdefeu.forgineer.entity;
 
 import io.github.saphirdefeu.forgineer.entity.ai.goal.AutomatonAttackSuspect;
 import io.github.saphirdefeu.forgineer.init.ForgineerEntities;
+import io.github.saphirdefeu.forgineer.init.ForgineerSounds;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -20,6 +21,8 @@ import net.minecraft.nbt.NbtList;
 import net.minecraft.particle.DustColorTransitionParticleEffect;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.TimeHelper;
 import net.minecraft.util.TypeFilter;
@@ -33,6 +36,7 @@ import java.util.*;
 public class AutomatonEntity extends GolemEntity implements Angerable {
 
     private static final UniformIntProvider ANGER_TIME_RANGE;
+    private static final UniformIntProvider SOUND_COOLDOWN_RANGE = TimeHelper.betweenSeconds(20, 120);
 
     private boolean isAngry;
     @Nullable
@@ -41,6 +45,7 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
     private int attackTicksLeft;
     private int angerTime;
     private int beamCooldown = 2;
+    private int soundCooldown = 240;
 
     private HashMap<UUID, Integer> reputationMap = new HashMap<>();
     public static final int MAX_REPUTATION = 50000;
@@ -91,6 +96,12 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
         this.beamCooldown = this.beamCooldown - 1;
         if(highestReputation > MAX_REPUTATION / 16 && this.beamCooldown <= 0) shootColorLaser(false);
         if(this.beamCooldown <= 0) this.beamCooldown = 5;
+
+        this.soundCooldown = this.soundCooldown - 1;
+        if(this.soundCooldown <= 0) {
+            playAutomatonSound();
+            this.soundCooldown = SOUND_COOLDOWN_RANGE.get(this.random);
+        }
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
@@ -221,7 +232,7 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
             EnchantmentHelper.onTargetDamaged(world, target, damageSource);
         }
 
-        this.playSound(SoundEvents.ENTITY_GUARDIAN_ATTACK, 1.0F, 0.5F);
+        // this.playSound(SoundEvents.ENTITY_GUARDIAN_ATTACK, 1.0F, 0.5F);
         if(bl) this.shootColorLaser(true);
         return bl;
     }
@@ -321,6 +332,20 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
         if(isAttackLaser) color = 16777215; // white
 
         return color;
+    }
+
+    public void playAutomatonSound() {
+        World world = this.getWorld();
+        if(world == null) return;
+        if(world.isClient()) return;
+        ServerWorld serverWorld = (ServerWorld) world;
+        SoundEvent event = ForgineerSounds.ENTITY_AUTOMATON_FRIENDLY;
+        if(this.highestReputation > MAX_REPUTATION / 16) event = ForgineerSounds.ENTITY_AUTOMATON_SUSPICIOUS;
+        if(this.highestReputation > MAX_REPUTATION / 8) event = ForgineerSounds.ENTITY_AUTOMATON_ANGERED;
+        if(this.highestReputation > MAX_REPUTATION / 4) event = ForgineerSounds.ENTITY_AUTOMATON_FURIOUS;
+        if(this.highestReputation > MAX_REPUTATION / 2) event = ForgineerSounds.ENTITY_AUTOMATON_HOSTILE;
+
+        serverWorld.playSound(this, this.getBlockPos(), event, SoundCategory.NEUTRAL, 1f, 1f);
     }
 
     public void playerMiningGemstoneEvent(PlayerEntity player) {

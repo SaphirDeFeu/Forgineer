@@ -159,11 +159,13 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
             if(player.isSprinting()) addReputation(uuid, 150); //150 per tick of sprinting
         }
 
-        for(UUID uuid : reputationMap.keySet()) {
+        for(ServerPlayerEntity player : players) {
+            UUID uuid = player.getUuid();
+            if(!reputationMap.containsKey(uuid)) continue;
             int val = reputationMap.get(uuid);
 
             // if a player has more than the max reputation, they should never get unfocused unless they die
-            if(val >= MAX_REPUTATION / 2) {
+            if(val >= MAX_REPUTATION / 2 && this.canSee(player)) {
                 reputationMap.put(uuid, MAX_REPUTATION);
             }
 
@@ -179,11 +181,14 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
     }
 
     private @Nullable ServerPlayerEntity getHighestReputation(Collection<ServerPlayerEntity> players) {
-        if(this.getWorld().isClient()) return null;
+        World world = this.getWorld();
+        if(world == null) return null;
+        if(world.isClient()) return null;
 
         ServerPlayerEntity highestRepPlayer = null;
         int highestRep = -1;
         for(ServerPlayerEntity player : players) {
+            if(!this.canSee(player)) continue;
             if(!reputationMap.containsKey(player.getUuid())) continue;
 
             int rep = reputationMap.get(player.getUuid());

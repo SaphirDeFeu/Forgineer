@@ -40,7 +40,7 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
 
     private int attackTicksLeft;
     private int angerTime;
-    private int beamCooldown = 20;
+    private int beamCooldown = 2;
 
     private HashMap<UUID, Integer> reputationMap = new HashMap<>();
     public static final int MAX_REPUTATION = 50000;
@@ -88,8 +88,9 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
         }
 
         // send colored laser towards player with different colors based on current stage of anger
-        beamCooldown--;
-        if(highestReputation > MAX_REPUTATION / 16) shootColorLaser(false);
+        this.beamCooldown = this.beamCooldown - 1;
+        if(highestReputation > MAX_REPUTATION / 16 && this.beamCooldown <= 0) shootColorLaser(false);
+        if(this.beamCooldown <= 0) this.beamCooldown = 5;
     }
 
     public void writeCustomDataToNbt(NbtCompound nbt) {
@@ -271,9 +272,6 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
     }
 
     public void shootColorLaser(boolean isAttackLaser) {
-        if(beamCooldown > 0 && !isAttackLaser) return;
-        if(beamCooldown == 0) beamCooldown = 20;
-
         World world = this.getWorld();
         LivingEntity target = this.getTarget();
         if(target == null || world == null) return;

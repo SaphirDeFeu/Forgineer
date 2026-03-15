@@ -12,7 +12,6 @@ import java.util.List;
 public class AutomatonAttackSuspect extends Goal {
     private final AutomatonEntity mob;
     private LivingEntity target;
-    private int cooldown;
 
     private double x;
     private double y;

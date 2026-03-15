@@ -150,10 +150,19 @@ public class AutomatonEntity extends GolemEntity implements Angerable {
 
         for(UUID uuid : reputationMap.keySet()) {
             int val = reputationMap.get(uuid);
+
+            // if a player has more than the max reputation, they should never get unfocused unless they die
+            if(val >= MAX_REPUTATION / 2) {
+                reputationMap.put(uuid, MAX_REPUTATION);
+            }
+
             if(val <= 0) {
                 reputationMap.put(uuid, 0);
             } else {
-                reputationMap.put(uuid, val - 1);
+                // passive reduction of 4 rep per tick
+                // that is equivalent (with 50k max rep)
+                // to going from 25000 rep to 0 rep in ~5 minutes (312.5 seconds exactly)
+                reputationMap.put(uuid, val - 4);
             }
         }
     }

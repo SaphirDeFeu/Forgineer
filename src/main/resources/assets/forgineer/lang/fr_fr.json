@@ -92,5 +92,12 @@
   "advancement.forgineer.find_netherite_gem": "Un repas du pouvoir",
   "advancement.forgineer.find_netherite_gem.description": "Est-ce que ça commence à vous agacer?",
   "advancement.forgineer.gem_gauntlet": "Le Gant",
-  "advancement.forgineer.gem_gauntlet.description": "Y a-t-il plus de pouvoir à obtenir?"
+  "advancement.forgineer.gem_gauntlet.description": "Y a-t-il plus de pouvoir à obtenir?",
+
+  "entity.forgineer.automaton": "Automate",
+  "subtitles.forgineer.automaton.friendly": "Automate est amical avec le joueur",
+  "subtitles.forgineer.automaton.suspicious": "Automate a des suspects sur un joueur",
+  "subtitles.forgineer.automaton.angered": "Automate en colère",
+  "subtitles.forgineer.automaton.furious": "Automate furieux",
+  "subtitles.forgineer.automaton.hostile": "Automate a décidé que la paix n'était pas une option"
 }

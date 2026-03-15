@@ -92,5 +92,12 @@
   "advancement.forgineer.find_netherite_gem": "A Meal of Power",
   "advancement.forgineer.find_netherite_gem.description": "Is this starting to get old yet?",
   "advancement.forgineer.gem_gauntlet": "The Gauntlet",
-  "advancement.forgineer.gem_gauntlet.description": "Is there more power to be had?"
+  "advancement.forgineer.gem_gauntlet.description": "Is there more power to be had?",
+
+  "entity.forgineer.automaton": "Automaton",
+  "subtitles.forgineer.automaton.friendly": "Automaton is friendly towards player",
+  "subtitles.forgineer.automaton.suspicious": "Automaton is suspicious of player",
+  "subtitles.forgineer.automaton.angered": "Automaton is angered",
+  "subtitles.forgineer.automaton.furious": "Automaton is furious at player",
+  "subtitles.forgineer.automaton.hostile": "Automaton decided peace was not an option"
 }
